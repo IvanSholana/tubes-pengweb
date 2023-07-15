@@ -16,6 +16,8 @@
     "dependencies": {
         "@inertiajs/inertia-react": "^0.8.1",
         "@inertiajs/react": "^1.0.9",
+        "@radix-ui/react-avatar": "^1.0.3",
+        "@radix-ui/react-popover": "1.0.6",
         "@vitejs/plugin-react": "^4.0.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"

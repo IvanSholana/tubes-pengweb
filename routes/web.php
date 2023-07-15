@@ -24,4 +24,4 @@ Route::get('/welcome', function () {
     return Inertia::render('Test');
 });
 
-Route::get('/customer', [DashboardController::class, 'show']);
+Route::get('/dashboard  ', [DashboardController::class, 'show']);
