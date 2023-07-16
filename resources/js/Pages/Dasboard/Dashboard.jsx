@@ -1,8 +1,8 @@
 import React from "react";
 import AvatarDemo from "../Component/Avatar";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import RoomReservationCard from "./Dashboard Component/RoomReservationCard";
 import ChatCustomer from "./Dashboard Component/CustomerChatCard";
+import LineChart from "../Component/Chart";
 
 export default function DashboarShow({}) {
     return (
@@ -76,11 +76,11 @@ export default function DashboarShow({}) {
                             </div>
                         </div>
                         {/* MAIN BOARD */}
-                        <div id="main-dashboard" className="flex h-1/2 ">
+                        <div id="main-dashboard" className="flex ">
                             {/* BOOKING BOARD */}
                             <div
                                 id="booking"
-                                className="border p-5 space-y-5 rounded-3xl m-5 bg-white w-1/2 shadow shadow-sm overflow-hidden box-border"
+                                className="border p-5 space-y-5 rounded-3xl m-5 bg-white w-1/2  shadow-sm overflow-hidden box-border h-96"
                             >
                                 {/* HEADER */}
                                 <div id="title-booking">
@@ -92,10 +92,13 @@ export default function DashboarShow({}) {
                                     </p>
                                 </div>
                                 {/* INFORMATION */}
-                                <div id="information" className="flex gap-5">
+                                <div
+                                    id="information"
+                                    className="flex gap-5 w-full"
+                                >
                                     <div
                                         id="booking"
-                                        className=" bg-green-300 p-5 rounded-xl"
+                                        className=" bg-green-300 p-5 rounded-xl w-2/6 shadow-md"
                                     >
                                         <p>Total Booking</p>
                                         <h1 className="text-4xl font-semibold">
@@ -104,7 +107,7 @@ export default function DashboarShow({}) {
                                     </div>
                                     <div
                                         id="free-rooms"
-                                        className=" bg-sky-300 p-5 rounded-xl"
+                                        className=" bg-sky-300 p-5 rounded-xl w-2/6 shadow-md"
                                     >
                                         <p>Free Rooms</p>
                                         <h1 className="text-4xl font-semibold">
@@ -126,7 +129,7 @@ export default function DashboarShow({}) {
                             {/* CUSTOMER CHAT */}
                             <div
                                 id="customer-chat"
-                                className="bg-white w-1/2 m-5 p-5 rounded-3xl space-y-10 shadow shadow-sm"
+                                className="bg-white w-1/2 m-5 p-5 rounded-3xl space-y-10 shadow-sm h-96"
                             >
                                 {/* TITLE CHAT */}
                                 <div className="-mb-5">
@@ -147,9 +150,12 @@ export default function DashboarShow({}) {
                         </div>
                         <div
                             id="navbar"
-                            className="bg-white  m-5 mt-0 p-5 rounded-3xl"
+                            className="bg-white  m-5 mt-0 p-5 rounded-3xl h-fit space-y-5"
                         >
-                            <h1>Diagram</h1>
+                            <h1 className="text-2xl font-semibold">Diagram</h1>
+                            <div className="w-1/2">
+                                <LineChart />
+                            </div>
                         </div>
                     </div>
                 </div>
