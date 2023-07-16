@@ -1,6 +1,8 @@
 import React from "react";
 import AvatarDemo from "../Component/Avatar";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import RoomReservationCard from "./Dashboard Component/RoomReservationCard";
+import ChatCustomer from "./Dashboard Component/CustomerChatCard";
 
 export default function DashboarShow({}) {
     return (
@@ -74,10 +76,11 @@ export default function DashboarShow({}) {
                             </div>
                         </div>
                         {/* MAIN BOARD */}
-                        <div id="main-dashboard" className="flex">
+                        <div id="main-dashboard" className="flex h-1/2 ">
+                            {/* BOOKING BOARD */}
                             <div
                                 id="booking"
-                                className="border p-5 grid gap-y-4 rounded-3xl m-5 bg-white w-1/2"
+                                className="border p-5 space-y-5 rounded-3xl m-5 bg-white w-1/2 shadow shadow-sm overflow-hidden box-border"
                             >
                                 {/* HEADER */}
                                 <div id="title-booking">
@@ -109,49 +112,45 @@ export default function DashboarShow({}) {
                                         </h1>
                                     </div>
                                 </div>
-                                <div id="table-room" className="border">
-                                    <div
-                                        id="room-type"
-                                        className="border flex gap-2 p-1"
-                                    >
-                                        <div>
-                                            <img
-                                                src="https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg"
-                                                alt=""
-                                                className="w-32 rounded-xl"
-                                            />
-                                        </div>
-                                        <h1 className="text-xl font-semibold self-center">
-                                            Deluxe <br />
-                                            <span className="text-sm font-normal">
-                                                Room Type
-                                            </span>
-                                        </h1>
-                                    </div>
-                                    <div
-                                        id="room-number"
-                                        className="border"
-                                    ></div>
-                                    <div id="check-in" className="border"></div>
-                                    <div
-                                        id="check-out"
-                                        className="border"
-                                    ></div>
+                                {/* TABLE RESERVATION ROOM */}
+                                <div
+                                    id="table-room"
+                                    className="overflow-auto h-36"
+                                >
+                                    <RoomReservationCard />
+                                    <RoomReservationCard />
+                                    <RoomReservationCard />
+                                    <RoomReservationCard />
                                 </div>
                             </div>
+                            {/* CUSTOMER CHAT */}
                             <div
                                 id="customer-chat"
-                                className="bg-white w-1/2 m-5 p-5 rounded-3xl gap-y-4 "
+                                className="bg-white w-1/2 m-5 p-5 rounded-3xl space-y-10 shadow shadow-sm"
                             >
-                                <h1 className="text-2xl font-semibold">
-                                    Customer Chat
-                                </h1>
-                                <div>
-                                    <AvatarDemo />
+                                {/* TITLE CHAT */}
+                                <div className="-mb-5">
+                                    <h1 className="text-2xl font-semibold mb-1">
+                                        Customer Chat
+                                    </h1>
+                                    <hr />
+                                </div>
+                                {/* CHAT CARD */}
+                                <div className="overflow-auto h-5/6 space-y-5">
+                                    <ChatCustomer />
+                                    <ChatCustomer />
+                                    <ChatCustomer />
+                                    <ChatCustomer />
+                                    <ChatCustomer />
                                 </div>
                             </div>
                         </div>
-                        <div id="navbar" className="border"></div>
+                        <div
+                            id="navbar"
+                            className="bg-white  m-5 mt-0 p-5 rounded-3xl"
+                        >
+                            <h1>Diagram</h1>
+                        </div>
                     </div>
                 </div>
             </div>
