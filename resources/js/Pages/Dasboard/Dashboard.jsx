@@ -152,14 +152,14 @@ export default function DashboarShow({}) {
                         {/* CHART */}
                         <div
                             id="navbar-chart"
-                            className="bg-white  m-5 mt-0 p-5 rounded-3xl h-fit space-y-5 h-fit"
+                            className="bg-white  m-5 mt-0 p-5 rounded-3xl h-fit space-y-5 "
                         >
                             <h1 className="text-2xl font-semibo">Diagram</h1>
                             <div className="flex space-x-5">
-                                <div className="w-1/2 self-center">
+                                <div className="w-1/2 self-center h-80 ">
                                     <LineChart />
                                 </div>
-                                <div className="w-1/2  flex justify-center">
+                                <div className="w-1/2 justify-center flex  h-56">
                                     <PieChart />
                                 </div>
                             </div>
