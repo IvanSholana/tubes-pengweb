@@ -1,7 +1,7 @@
 import RoomReservationCard from "./RoomReservationCard";
 import ChatCustomer from "./CustomerChatCard";
-import LineChart from "../../Component/LineChart";
-import { PieChart } from "../../Component/PieChart";
+import LineChart from "../../Components/LineChart";
+import { PieChart } from "../../Components/PieChart";
 
 export default function MainBoard(props) {
     return (

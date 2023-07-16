@@ -1,5 +1,5 @@
 import React from "react";
-import AvatarDemo from "../../Component/Avatar";
+import AvatarDemo from "../../Components/Avatar";
 
 export default function ChatCustomer({}) {
     return (

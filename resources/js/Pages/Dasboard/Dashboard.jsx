@@ -5,7 +5,7 @@ import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import BedIcon from "@mui/icons-material/Bed";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
-import DropDownMenu from "../Component/DropDownMenu";
+import DropDownMenu from "../Components/DropDownMenu";
 import RoomReservationCard from "./Dashboard Component/RoomReservationCard";
 import MainBoard from "./Dashboard Component/MainBoard";
 
