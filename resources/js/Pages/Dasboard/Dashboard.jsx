@@ -14,7 +14,7 @@ import FastfoodIcon from "@mui/icons-material/Fastfood";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import DropDownMenu from "../Component/DropDownMenu";
 
-export default function DashboarShow({}) {
+export default function DashboarShow({ rowCount }) {
     return (
         <>
             {/* DASHBOARD LIST */}
@@ -140,7 +140,7 @@ export default function DashboarShow({}) {
                                     >
                                         <p>Total Booking</p>
                                         <h1 className="text-4xl font-semibold">
-                                            234
+                                            {rowCount}
                                         </h1>
                                     </div>
                                     <div
