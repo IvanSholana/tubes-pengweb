@@ -12,6 +12,7 @@ import BedIcon from "@mui/icons-material/Bed";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import LuggageIcon from "@mui/icons-material/Luggage";
+import DropDownMenu from "../Component/DropDownMenu";
 
 export default function DashboarShow({}) {
     return (
@@ -108,9 +109,8 @@ export default function DashboarShow({}) {
                                     Monday, 7 July 2023
                                 </p>
                             </div>
-                            <div className=" ml-auto self-center flex border">
-                                <AvatarDemo />
-                                <DropdownMenuDemo />
+                            <div className=" ml-auto self-center ">
+                                <DropDownMenu />
                             </div>
                         </div>
                         {/* MAIN BOARD */}

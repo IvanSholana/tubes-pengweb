@@ -1,38 +1,36 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import AvatarDemo from "./Avatar";
 
-export default () => (
-    <DropdownMenu.Root>
-        <DropdownMenu.Trigger />
+function DropDownMenu() {
+    return (
+        <>
+            <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                    <AvatarDemo />
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Portal>
+                    <DropdownMenu.Content
+                        className="min-w-[220px] bg-white rounded-md p-2 shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
+                        sideOffset={5}
+                    >
+                        <button className="w-full text-start">
+                            <DropdownMenu.Item>
+                                {" "}
+                                <p className="p-2">Your Profile</p>
+                            </DropdownMenu.Item>
+                        </button>
+                        <DropdownMenu.Separator className="h-[1px] bg-violet6 m-[5px]" />
+                        <button className="w-full text-start">
+                            <DropdownMenu.Item>
+                                {" "}
+                                <p className="p-2">Logout</p>
+                            </DropdownMenu.Item>
+                        </button>
+                    </DropdownMenu.Content>
+                </DropdownMenu.Portal>
+            </DropdownMenu.Root>
+        </>
+    );
+}
 
-        <DropdownMenu.Portal>
-            <DropdownMenu.Content>
-                <DropdownMenu.Label />
-                <DropdownMenu.Item />
-
-                <DropdownMenu.Group>
-                    <DropdownMenu.Item />
-                </DropdownMenu.Group>
-
-                <DropdownMenu.CheckboxItem>
-                    <DropdownMenu.ItemIndicator />
-                </DropdownMenu.CheckboxItem>
-
-                <DropdownMenu.RadioGroup>
-                    <DropdownMenu.RadioItem>
-                        <DropdownMenu.ItemIndicator />
-                    </DropdownMenu.RadioItem>
-                </DropdownMenu.RadioGroup>
-
-                <DropdownMenu.Sub>
-                    <DropdownMenu.SubTrigger />
-                    <DropdownMenu.Portal>
-                        <DropdownMenu.SubContent />
-                    </DropdownMenu.Portal>
-                </DropdownMenu.Sub>
-
-                <DropdownMenu.Separator />
-                <DropdownMenu.Arrow />
-            </DropdownMenu.Content>
-        </DropdownMenu.Portal>
-    </DropdownMenu.Root>
-);
+export default DropDownMenu;
