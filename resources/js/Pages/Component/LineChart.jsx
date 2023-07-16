@@ -5,11 +5,21 @@ import {
     CategoryScale,
     LinearScale,
     PointElement,
+    Legend,
+    Tooltip,
 } from "chart.js";
 
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
+ChartJS.register(
+    LineElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Legend,
+    Tooltip
+);
 
 const options = {
+    responsive: true,
     plugins: { legend: true },
     scales: { y: { min: 3, max: 6 } },
 };
@@ -32,7 +42,7 @@ function LineChart() {
         ],
         datasets: [
             {
-                labels: "Sales of The Week",
+                label: "Jumlah Reservasi",
                 data: [3, 6, 9],
                 backgroundColor: "aqua",
                 borderColor: "black",

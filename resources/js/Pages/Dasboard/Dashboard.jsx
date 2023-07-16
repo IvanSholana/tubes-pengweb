@@ -2,7 +2,8 @@ import React from "react";
 import AvatarDemo from "../Component/Avatar";
 import RoomReservationCard from "./Dashboard Component/RoomReservationCard";
 import ChatCustomer from "./Dashboard Component/CustomerChatCard";
-import LineChart from "../Component/Chart";
+import LineChart from "../Component/LineChart";
+import { PieChart } from "../Component/PieChart";
 
 export default function DashboarShow({}) {
     return (
@@ -148,13 +149,19 @@ export default function DashboarShow({}) {
                                 </div>
                             </div>
                         </div>
+                        {/* CHART */}
                         <div
-                            id="navbar"
-                            className="bg-white  m-5 mt-0 p-5 rounded-3xl h-fit space-y-5"
+                            id="navbar-chart"
+                            className="bg-white  m-5 mt-0 p-5 rounded-3xl h-fit space-y-5 h-fit"
                         >
-                            <h1 className="text-2xl font-semibold">Diagram</h1>
-                            <div className="w-1/2">
-                                <LineChart />
+                            <h1 className="text-2xl font-semibo">Diagram</h1>
+                            <div className="flex space-x-5">
+                                <div className="w-1/2 self-center">
+                                    <LineChart />
+                                </div>
+                                <div className="w-1/2  flex justify-center">
+                                    <PieChart />
+                                </div>
                             </div>
                         </div>
                     </div>
