@@ -4,6 +4,7 @@ import RoomReservationCard from "./Dashboard Component/RoomReservationCard";
 import ChatCustomer from "./Dashboard Component/CustomerChatCard";
 import LineChart from "../Component/LineChart";
 import { PieChart } from "../Component/PieChart";
+import DropdownMenuDemo from "../Component/DropDownMenu";
 
 export default function DashboarShow({}) {
     return (
@@ -72,8 +73,9 @@ export default function DashboarShow({}) {
                                     Monday, 7 July 2023
                                 </p>
                             </div>
-                            <div className=" ml-auto self-center">
+                            <div className=" ml-auto self-center flex border">
                                 <AvatarDemo />
+                                <DropdownMenuDemo />
                             </div>
                         </div>
                         {/* MAIN BOARD */}
