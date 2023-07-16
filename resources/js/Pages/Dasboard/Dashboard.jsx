@@ -5,6 +5,13 @@ import ChatCustomer from "./Dashboard Component/CustomerChatCard";
 import LineChart from "../Component/LineChart";
 import { PieChart } from "../Component/PieChart";
 import DropdownMenuDemo from "../Component/DropDownMenu";
+import HomeIcon from "@mui/icons-material/Home";
+import EventSeatIcon from "@mui/icons-material/EventSeat";
+import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import BedIcon from "@mui/icons-material/Bed";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
+import LuggageIcon from "@mui/icons-material/Luggage";
 
 export default function DashboarShow({}) {
     return (
@@ -14,38 +21,66 @@ export default function DashboarShow({}) {
                 <div className="flex p-5 rounded-3xl bg-white">
                     <div id="dashboard-menu" className="w-1/6 px-2 pt-5 me-5">
                         <div className="mb-2 font-bold text-center text-3xl">
-                            LOGO
+                            <div
+                                id="logo"
+                                className="bg-sky-200 flex align-middle justify-center p-5   w-14 h-14 rounded-full mb-14"
+                            ></div>
                         </div>
-                        <hr className="mb-3" />
-                        <div className="grid grid-rows-6 gap-4">
+                        <div className="grid grid-rows-6 gap-6">
                             <div>
-                                <button className="border px-3 py-1 rounded-md w-full">
-                                    Dashboard
+                                <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
+                                    <span className="flex align-middle  space-x-1">
+                                        <HomeIcon />
+                                        <p className="font-semibold">
+                                            Dashboard
+                                        </p>
+                                    </span>
                                 </button>
                             </div>
                             <div>
-                                <button className="border px-3 py-1 rounded-md w-full">
-                                    Reservasi
+                                <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
+                                    <span className="flex align-middle  space-x-1">
+                                        <EventSeatIcon />
+                                        <p className="font-semibold">
+                                            Reservasi
+                                        </p>
+                                    </span>
                                 </button>
                             </div>
                             <div>
-                                <button className="border px-3 py-1 rounded-md w-full">
-                                    Data Kamar
+                                <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
+                                    <span className="flex align-middle  space-x-1">
+                                        <CleaningServicesIcon />
+                                        <p className="font-semibold">Service</p>
+                                    </span>
                                 </button>
                             </div>
                             <div>
-                                <button className="border px-3 py-1 rounded-md w-full">
-                                    Service
+                                <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
+                                    <span className="flex align-middle  space-x-1">
+                                        <BedIcon />
+                                        <p className="font-semibold">
+                                            Room Information
+                                        </p>
+                                    </span>
                                 </button>
                             </div>
                             <div>
-                                <button className="border px-3 py-1 rounded-md w-full">
-                                    Facility
+                                <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
+                                    <span className="flex align-middle  space-x-1">
+                                        <FastfoodIcon />
+                                        <p className="font-semibold">
+                                            Facility
+                                        </p>
+                                    </span>
                                 </button>
                             </div>
                             <div>
-                                <button className="border px-3 py-1 rounded-md w-full">
-                                    Report
+                                <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
+                                    <span className="flex align-middle  space-x-1">
+                                        <AssessmentIcon />
+                                        <p className="font-semibold">Report</p>
+                                    </span>
                                 </button>
                             </div>
                         </div>
@@ -53,7 +88,7 @@ export default function DashboarShow({}) {
                     {/* DASHBOARD */}
                     <div id="dashboard" className="w-5/6 bg-slate-200">
                         {/* NAVBAR */}
-                        <div id="navbar" className="p-10 flex gap-3  bg-white ">
+                        <div id="navbar" className="p-10 flex gap-3  bg-white">
                             <div
                                 id="name-account"
                                 className="border-e pe-5 me-3 self-center"
