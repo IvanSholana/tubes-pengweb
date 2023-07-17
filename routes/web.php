@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::get('/welcome', function () {
     return Inertia::render('Test');
 });
 
-Route::get('/dashboard  ', [DashboardController::class, 'show']);
+Route::get('/dashboard  ', [DashboardController::class, 'showdashboard'])->name('dashboardpage');
+Route::get('/reservation  ', [DashboardController::class, 'showreservation'])->name('reservationpage');

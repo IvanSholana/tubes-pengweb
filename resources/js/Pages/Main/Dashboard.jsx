@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
@@ -6,10 +6,27 @@ import BedIcon from "@mui/icons-material/Bed";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import DropDownMenu from "../Components/DropDownMenu";
-import RoomReservationCard from "./Dashboard Components/RoomReservationCard";
-import MainBoard from "./Dashboard Components/MainBoard";
+import MainBoard from "../Dasboard/Dashboard Components/MainBoard";
+import Reservation from "../Reservation/Reservation";
 
-export default function DashboarShow({ rowCount }) {
+const TodayDate = () => {
+    const [currentDate, setCurrentDate] = useState("");
+
+    useEffect(() => {
+        const date = new Date();
+        const formattedDate = date.toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
+        setCurrentDate(formattedDate);
+    }, []);
+
+    return <>{currentDate}</>;
+};
+
+export default function DashboarShow({ rowCount, page }) {
     return (
         <>
             {/* DASHBOARD LIST */}
@@ -28,7 +45,7 @@ export default function DashboarShow({ rowCount }) {
                                     <span className="flex align-middle  space-x-1">
                                         <HomeIcon />
                                         <p className="font-semibold">
-                                            Dashboard
+                                            <a href="/dashboard">Dasboard</a>
                                         </p>
                                     </span>
                                 </button>
@@ -38,7 +55,7 @@ export default function DashboarShow({ rowCount }) {
                                     <span className="flex align-middle  space-x-1">
                                         <EventSeatIcon />
                                         <p className="font-semibold">
-                                            Reservasi
+                                            <a href="/reservation">Reservasi</a>
                                         </p>
                                     </span>
                                 </button>
@@ -101,14 +118,18 @@ export default function DashboarShow({ rowCount }) {
                                 className="flex items-center self-center justify-center py-2 bg-slate-800 px-5 rounded-xl"
                             >
                                 <p className="text-center text-md text-white">
-                                    Monday, 7 July 2023
+                                    <TodayDate />
                                 </p>
                             </div>
                             <div className=" ml-auto self-center ">
                                 <DropDownMenu />
                             </div>
                         </div>
-                        <MainBoard Count={rowCount} />
+                        {page == "Dashboard" ? (
+                            <MainBoard Count={rowCount} />
+                        ) : page == "Reservation" ? (
+                            <Reservation />
+                        ) : null}
                     </div>
                 </div>
             </div>
