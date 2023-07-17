@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\customer;
+use App\Models\roomtype;
 use App\Models\hotelroom;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,8 @@ class DashboardController extends Controller
 
     public function showreservation(){
         $hotelroom = hotelroom::getAllData();
-        return inertia('Main/Dashboard',['page' =>'Reservation','room'=>$hotelroom]);
+        $roomtype = roomtype::getAllData();
+
+        return inertia('Main/Dashboard',['page' =>'Reservation','rooms'=>[$hotelroom,$roomtype]]);
     }
 }

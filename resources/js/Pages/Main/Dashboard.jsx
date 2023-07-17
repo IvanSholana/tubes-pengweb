@@ -26,11 +26,11 @@ const TodayDate = () => {
     return <>{currentDate}</>;
 };
 
-export default function DashboarShow({ rowCount, page, room }) {
+export default function DashboarShow({ rowCount, page, rooms }) {
     return (
         <>
             {/* DASHBOARD LIST */}
-            <div className=" p-5 bg-slate-200">
+            <div className="p-5 bg-slate-200 h-full">
                 <div className="flex p-5 rounded-3xl bg-white">
                     <div id="dashboard-menu" className="w-1/6 px-2 pt-5 me-5">
                         <div className="mb-2 font-bold text-center text-3xl">
@@ -128,7 +128,7 @@ export default function DashboarShow({ rowCount, page, room }) {
                         {page == "Dashboard" ? (
                             <MainBoard Count={rowCount} />
                         ) : page == "Reservation" ? (
-                            <Reservation Room={room} />
+                            <Reservation Room={rooms} />
                         ) : null}
                     </div>
                 </div>

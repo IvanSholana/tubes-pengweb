@@ -12,4 +12,7 @@ class roomtype extends Model
     protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;
+    public static function getAllData(){
+        return self::all();
+    }
 }
