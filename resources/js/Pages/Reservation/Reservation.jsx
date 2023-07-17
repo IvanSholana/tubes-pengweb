@@ -1,7 +1,6 @@
 import React from "react";
-import BedIcon from "@mui/icons-material/Bed";
 
-export default function Reservation() {
+export default function Reservation({ Room }) {
     return (
         <>
             <div className="p-5 bg-white w-1/2 m-5 rounded-xl shadow-md">
@@ -50,13 +49,18 @@ export default function Reservation() {
                         <div>
                             <label htmlFor="">
                                 <select
-                                    name=""
-                                    id=""
-                                    className="w-28 bg-slate-200 bg-slate-200 mt-1 h-7 rounded-md"
+                                    id="roomNumber"
+                                    className="w-28 bg-slate-200 mt-1 h-7 rounded-md"
                                 >
-                                    <option value="1" className="">
-                                        01-05
-                                    </option>
+                                    {Room.map((room) => (
+                                        <option
+                                            key={room.nomor_kamar}
+                                            value={`${room.nomor_kamar} - ${room.jenis_kamar}`}
+                                            className=""
+                                        >
+                                            {`${room.nomor_kamar} - ${room.jenis_kamar}`}
+                                        </option>
+                                    ))}
                                 </select>
                             </label>
                         </div>

@@ -26,7 +26,7 @@ const TodayDate = () => {
     return <>{currentDate}</>;
 };
 
-export default function DashboarShow({ rowCount, page }) {
+export default function DashboarShow({ rowCount, page, room }) {
     return (
         <>
             {/* DASHBOARD LIST */}
@@ -128,7 +128,7 @@ export default function DashboarShow({ rowCount, page }) {
                         {page == "Dashboard" ? (
                             <MainBoard Count={rowCount} />
                         ) : page == "Reservation" ? (
-                            <Reservation />
+                            <Reservation Room={room} />
                         ) : null}
                     </div>
                 </div>

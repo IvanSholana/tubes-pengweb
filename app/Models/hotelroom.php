@@ -10,4 +10,7 @@ class hotelroom extends Model
     use HasFactory;
     protected $primaryKey = 'nomor_kamar';
     public $timestamps = false;
+    public static function getAllData(){
+        return self::all();
+    }
 }
