@@ -99,6 +99,7 @@ export default function Reservation({ Room }) {
                                     </label>
                                 </div>
                             </div>
+                            <button>Tambahkan Data</button>
                         </form>
                     </div>
                     <div
@@ -109,38 +110,42 @@ export default function Reservation({ Room }) {
                         }}
                     ></div>
                 </div>
+                {/* INVOICE */}
                 <div className="border p-5 bg-white w-1/2 m-5 rounded-xl shadow-md space-y-5">
                     <div>
                         <h1 className="text-2xl font-semibold mb-2">Invoice</h1>
                         <hr />
                     </div>
-                    <div className="flex w-2/3 border justify-between">
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Nama Lengkap</h1>
                         <p>Ivan Sholana</p>
                     </div>
-                    <div className="flex w-2/3 border justify-between">
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">NIK</h1>
                         <p>1203210030</p>
                     </div>
-                    <div className="flex w-2/3 border justify-between">
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">
                             Room Reservased
                         </h1>
                         <p>6 - Deluxe</p>
                     </div>
-                    <div className="flex w-2/3 border justify-between">
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Check In</h1>
                         <p>12 July 2023</p>
                     </div>
-                    <div className="flex w-2/3 border justify-between">
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Check Out</h1>
                         <p>15 July 2023</p>
                     </div>
-                    <div className="flex w-2/3 border justify-between">
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Total Payment</h1>
                         <p>Rp1.000.000</p>
                     </div>
-                    {/* <Alertdialog /> */}
+                    <div className="pt-5">
+                        {" "}
+                        <Alertdialog />
+                    </div>
                 </div>
             </div>
         </>
