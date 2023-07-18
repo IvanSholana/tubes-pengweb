@@ -1,7 +1,54 @@
 import React from "react";
 import Alertdialog from "../Components/AlertDialog";
+import { useState } from "react";
+import { usePage } from "@inertiajs/inertia-react";
 
 export default function Reservation({ Room }) {
+    const { post } = usePage();
+    const [showdata, setshow] = useState(false);
+
+    const [formData, setFormData] = useState({
+        name: "",
+        nik: "",
+        roomType: "",
+        roomNumber: "",
+        checkInDate: "",
+        checkOutDate: "",
+    });
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+
+        // Mengumpulkan data form yang diisi oleh pengguna
+        const { name, nik, roomType, roomNumber, checkInDate, checkOutDate } =
+            formData;
+
+        // Mengirim data ke rute Laravel menggunakan inertia.post()
+        post("/create", {
+            name,
+            nik,
+            roomType,
+            roomNumber,
+            checkInDate,
+            checkOutDate,
+        })
+            .then(() => {
+                // Redirect ke halaman lain jika diperlukan
+                // contoh: history.push('/other-route');
+            })
+            .catch((error) => {
+                // Penanganan kesalahan jika terjadi
+                console.error(error);
+            });
+    };
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
     return (
         <>
             <div className="container flex">
@@ -13,14 +60,15 @@ export default function Reservation({ Room }) {
                             </h1>
                             <hr className="mb-5" />
                         </div>
-                        <form action="" className="space-y-5">
+                        <form onSubmit={handleFormSubmit} className="space-y-5">
                             <div>
                                 <label>
                                     Nama Lengkap <br />
                                     <input
                                         type="text"
-                                        name=""
-                                        id=""
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
                                         className="bg-slate-200 w-56 mt-1 h-7 rounded-md p-2"
                                     />
                                 </label>
@@ -30,18 +78,22 @@ export default function Reservation({ Room }) {
                                     NIK <br />
                                     <input
                                         type="text"
-                                        name=""
-                                        id=""
+                                        name="nik"
+                                        value={formData.nik}
+                                        onChange={handleInputChange}
                                         className="bg-slate-200 w-56 mt-1 h-7 rounded-md p-2"
                                     />
                                 </label>
                             </div>
+                            {/*  */}
                             <div className="flex space-x-11">
                                 <div>
+                                    <h1>Jenis Kamar</h1>
                                     <label htmlFor="">
                                         <select
-                                            name=""
-                                            id=""
+                                            name="roomType"
+                                            value={formData.roomType}
+                                            onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
                                             {Room[1].map((room) => (
@@ -57,9 +109,12 @@ export default function Reservation({ Room }) {
                                     </label>
                                 </div>
                                 <div className="z-40">
+                                    <h1>Nomor Kamar</h1>
                                     <label htmlFor="">
                                         <select
-                                            id="roomNumber"
+                                            name="roomNumber"
+                                            value={formData.roomNumber}
+                                            onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
                                             {Room[0].map((room) => (
@@ -78,11 +133,12 @@ export default function Reservation({ Room }) {
                             <div className="flex space-x-5">
                                 <div>
                                     <label htmlFor="">
-                                        Check Out <br />
+                                        Check In <br />
                                         <input
                                             type="date"
-                                            name=""
-                                            id=""
+                                            name="checkInDate"
+                                            value={formData.checkInDate}
+                                            onChange={handleInputChange}
                                             className=" bg-slate-200 mt-1 h-7 rounded-md p-5"
                                         />
                                     </label>
@@ -92,14 +148,20 @@ export default function Reservation({ Room }) {
                                         Check Out <br />
                                         <input
                                             type="date"
-                                            name=""
-                                            id=""
+                                            name="checkOutDate"
+                                            value={formData.checkOutDate}
+                                            onChange={handleInputChange}
                                             className="bg-slate-200 mt-1 h-7 rounded-md p-5"
                                         />
                                     </label>
                                 </div>
                             </div>
-                            <button>Tambahkan Data</button>
+                            <button
+                                onClick={() => setshow(true)}
+                                className="text-white hover:bg-mauve3 shadow-md inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-600 px-[15px] font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+                            >
+                                Tambahkan Data
+                            </button>
                         </form>
                     </div>
                     <div
@@ -118,25 +180,25 @@ export default function Reservation({ Room }) {
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Nama Lengkap</h1>
-                        <p>Ivan Sholana</p>
+                        <p>{showdata ? formData.name : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">NIK</h1>
-                        <p>1203210030</p>
+                        <p>{showdata ? formData.nik : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">
                             Room Reservased
                         </h1>
-                        <p>6 - Deluxe</p>
+                        <p>{showdata ? `${formData.roomNumber}` : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Check In</h1>
-                        <p>12 July 2023</p>
+                        <p>{showdata ? formData.checkInDate : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Check Out</h1>
-                        <p>15 July 2023</p>
+                        <p>{showdata ? formData.checkOutDate : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Total Payment</h1>

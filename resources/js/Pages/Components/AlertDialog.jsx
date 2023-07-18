@@ -25,8 +25,11 @@ export default function Alertdialog() {
                                 </button>
                             </AlertDialog.Cancel>
                             <AlertDialog.Action asChild>
-                                <button className="z-50 text-red11 bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
-                                    Yes
+                                <button
+                                    type="submit"
+                                    className="z-50 text-red11 bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
+                                >
+                                    <a href="create">Yes</a>
                                 </button>
                             </AlertDialog.Action>
                         </div>

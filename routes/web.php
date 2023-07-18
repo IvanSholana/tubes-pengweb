@@ -25,5 +25,6 @@ Route::get('/welcome', function () {
     return Inertia::render('Test');
 });
 
-Route::get('/dashboard  ', [DashboardController::class, 'showdashboard'])->name('dashboardpage');
-Route::get('/reservation  ', [DashboardController::class, 'showreservation'])->name('reservationpage');
+Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
+Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
+Route::post('/ceate', [ReservationController::class,'insertdata']);
