@@ -17,7 +17,7 @@ class ReservationController extends Controller
             'no_nik' => $request->input('nik'),
             'no_telepon' => $request->input('no_hp'),
         ];
-
+        $customer = customer::firstOrCreate(['no_nik' => $request->input('nik')], $dataCustomer);
         $dataReservation = [
             'no_nik' => $request->input('nik'),
             'total_harga' => $request->input('harga'),
@@ -26,7 +26,6 @@ class ReservationController extends Controller
             'id_kamar' => $request->input('roomNumber'),
         ];
 
-        customer::create($dataCustomer);
         reservation::create($dataReservation);
     }
 }
