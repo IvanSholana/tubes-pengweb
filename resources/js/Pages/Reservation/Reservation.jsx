@@ -10,7 +10,7 @@ export default function Reservation({ Room }) {
         name: "",
         nik: "",
         no_hp: "",
-        roomType: "",
+        roomType: "Deluxe",
         roomNumber: "",
         checkInDate: "",
         checkOutDate: "",
@@ -54,6 +54,7 @@ export default function Reservation({ Room }) {
         handleFormSubmit();
     };
 
+    const uniqueRoomTypes = new Set();
     return (
         <>
             <div className="container flex">
@@ -113,15 +114,37 @@ export default function Reservation({ Room }) {
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
-                                            {Room.map((room) => (
-                                                <option
-                                                    key={`${room.nomor_kamar}-${room.roomtype.jenis}`}
-                                                    value={room.roomtype.jenis}
-                                                    className=""
-                                                >
-                                                    {room.roomtype.jenis}
-                                                </option>
-                                            ))}
+                                            {Room.map((room) => {
+                                                // Memeriksa apakah jenis kamar sudah ada di Set
+                                                if (
+                                                    !uniqueRoomTypes.has(
+                                                        room.roomtype.jenis
+                                                    )
+                                                ) {
+                                                    // Jika belum ada, tambahkan jenis kamar ke Set dan tampilkan opsi
+                                                    uniqueRoomTypes.add(
+                                                        room.roomtype.jenis
+                                                    );
+
+                                                    return (
+                                                        <option
+                                                            key={`${room.nomor_kamar}-${room.roomtype.jenis}`}
+                                                            value={
+                                                                room.roomtype
+                                                                    .jenis
+                                                            }
+                                                            className=""
+                                                        >
+                                                            {
+                                                                room.roomtype
+                                                                    .jenis
+                                                            }
+                                                        </option>
+                                                    );
+                                                }
+                                                // Jika jenis kamar sudah ada di Set, skip dan tidak tampilkan opsi
+                                                return null;
+                                            })}
                                         </select>
                                     </label>
                                 </div>
@@ -134,15 +157,27 @@ export default function Reservation({ Room }) {
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
-                                            {Room.map((room) => (
-                                                <option
-                                                    key={room.nomor_kamar}
-                                                    value={`${room.nomor_kamar}`}
-                                                    className=""
-                                                >
-                                                    {`${room.nomor_kamar} - ${room.jenis_kamar}`}
-                                                </option>
-                                            ))}
+                                            {Room.map((room) => {
+                                                // Cek apakah room.jenis_kamar sama dengan room.roomtype.jenis_kamar
+                                                if (
+                                                    room.jenis_kamar ===
+                                                    formData.roomType
+                                                ) {
+                                                    return (
+                                                        <option
+                                                            key={
+                                                                room.nomor_kamar
+                                                            }
+                                                            value={`${room.nomor_kamar}`}
+                                                            className=""
+                                                        >
+                                                            {`${room.nomor_kamar} - ${room.jenis_kamar}`}
+                                                        </option>
+                                                    );
+                                                }
+                                                // Jika tidak memenuhi kondisi, return null untuk menghilangkan opsi dari tampilan
+                                                return null;
+                                            })}
                                         </select>
                                     </label>
                                 </div>
@@ -215,7 +250,7 @@ export default function Reservation({ Room }) {
                         </h1>
                         <p>
                             {showdata
-                                ? `${formData.roomNumber - formData.roomType}`
+                                ? `${formData.roomNumber} - ${formData.roomType}`
                                 : null}
                         </p>
                     </div>
@@ -229,7 +264,24 @@ export default function Reservation({ Room }) {
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Total Payment</h1>
-                        <p>Rp1.000.000</p>
+                        {Room.map((room) => {
+                            const startDateObj = new Date(formData.checkInDate);
+                            const endDateObj = new Date(formData.checkOutDate);
+                            const differenceInMilliseconds =
+                                endDateObj - startDateObj;
+                            const differenceInDays =
+                                differenceInMilliseconds /
+                                (1000 * 60 * 60 * 24);
+                            if (formData.roomNumber == room.nomor_kamar) {
+                                return (
+                                    <p>
+                                        Rp
+                                        {room.roomtype.harga * differenceInDays}
+                                    </p>
+                                );
+                            }
+                            return null;
+                        })}
                     </div>
                     <div className="pt-5">
                         <>
