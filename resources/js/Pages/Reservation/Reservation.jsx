@@ -14,6 +14,7 @@ export default function Reservation({ Room }) {
         roomNumber: "",
         checkInDate: "",
         checkOutDate: "",
+        harga: "",
     });
 
     const handleFormSubmit = () => {
@@ -26,6 +27,7 @@ export default function Reservation({ Room }) {
             roomNumber,
             checkInDate,
             checkOutDate,
+            harga,
         } = formData;
 
         // Mengirim data ke rute Laravel menggunakan inertia.post()
@@ -209,7 +211,10 @@ export default function Reservation({ Room }) {
                                 </div>
                             </div>
                             <button
-                                onClick={() => setshow(true)}
+                                onClick={() => {
+                                    setshow(true);
+                                    handleInputChange;
+                                }}
                                 type="button"
                                 className="text-white hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-600 px-[15px] font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
                             >
@@ -273,10 +278,15 @@ export default function Reservation({ Room }) {
                                 differenceInMilliseconds /
                                 (1000 * 60 * 60 * 24);
                             if (formData.roomNumber == room.nomor_kamar) {
+                                formData.harga =
+                                    room.roomtype.harga * differenceInDays;
                                 return (
                                     <p>
                                         Rp
-                                        {room.roomtype.harga * differenceInDays}
+                                        {showdata
+                                            ? room.roomtype.harga *
+                                              differenceInDays
+                                            : null}
                                     </p>
                                 );
                             }
