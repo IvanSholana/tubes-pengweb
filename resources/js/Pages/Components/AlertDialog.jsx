@@ -5,7 +5,7 @@ export default function Alertdialog() {
         <>
             <AlertDialog.Root>
                 <AlertDialog.Trigger asChild>
-                    <button className="text-white hover:bg-mauve3 shadow-md inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-600 px-[15px] font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black">
+                    <button className="text-white hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-600 px-[15px] font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black">
                         Confirm Resevation
                     </button>
                 </AlertDialog.Trigger>

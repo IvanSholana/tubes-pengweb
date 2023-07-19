@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\hotelroom;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class roomtype extends Model
 {
@@ -14,5 +15,9 @@ class roomtype extends Model
     public $timestamps = false;
     public static function getAllData(){
         return self::all();
+    }
+    public function hotelRooms()
+    {
+        return $this->hasMany(hotelroom::class, 'jenis_kamar', 'jenis');
     }
 }

@@ -27,4 +27,4 @@ Route::get('/welcome', function () {
 
 Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
 Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
-Route::post('/ceate', [ReservationController::class,'insertdata']);
+Route::post('/create', [ReservationController::class,'insertdata']);

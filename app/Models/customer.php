@@ -11,6 +11,11 @@ class customer extends Model
     protected $primaryKey = 'no_nik';
     public $incrementing = false;
     public $timestamps = false;
+    protected $fillable = [
+        'no_nik',
+        'nama_pelanggan',
+        'no_telepon',
+    ];
     public static function getRowCount(){
         return self::count();
     }

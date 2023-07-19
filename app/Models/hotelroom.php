@@ -13,4 +13,8 @@ class hotelroom extends Model
     public static function getAllData(){
         return self::all();
     }
+    public function roomType()
+    {
+        return $this->belongsTo(roomtype::class, 'jenis_kamar', 'jenis');
+    }
 }
