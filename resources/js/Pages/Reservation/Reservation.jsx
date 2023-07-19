@@ -9,6 +9,7 @@ export default function Reservation({ Room }) {
     const [formData, setFormData] = useState({
         name: "",
         nik: "",
+        no_hp: "",
         roomType: "",
         roomNumber: "",
         checkInDate: "",
@@ -17,8 +18,15 @@ export default function Reservation({ Room }) {
 
     const handleFormSubmit = () => {
         // Mengumpulkan data form yang diisi oleh pengguna
-        const { name, nik, roomType, roomNumber, checkInDate, checkOutDate } =
-            formData;
+        const {
+            name,
+            nik,
+            no_hp,
+            roomType,
+            roomNumber,
+            checkInDate,
+            checkOutDate,
+        } = formData;
 
         // Mengirim data ke rute Laravel menggunakan inertia.post()
         Inertia.post("/create", formData, {
@@ -50,12 +58,8 @@ export default function Reservation({ Room }) {
         <>
             <div className="container flex">
                 <div className="border p-5 bg-white w-1/2 m-5 rounded-xl shadow-md relative overflow-hidden">
-                    <form
-                        onSubmit={handleFormSubmit}
-                        className="space-y-5"
-                        method="post"
-                    >
-                        <div className="z-40 w-full space-y-5">
+                    <form onSubmit={handleFormSubmit} method="post">
+                        <div className="z-40 w-full space-y-3">
                             <div>
                                 <h1 className="text-2xl font-semibold mb-2 z-40">
                                     New Reservation
@@ -86,6 +90,18 @@ export default function Reservation({ Room }) {
                                     />
                                 </label>
                             </div>
+                            <div className="w-1/2">
+                                <label htmlFor="">
+                                    Nomer Telepon <br />
+                                    <input
+                                        type="text"
+                                        name="no_hp"
+                                        value={formData.no_hp}
+                                        onChange={handleInputChange}
+                                        className="bg-slate-200 w-56 mt-1 h-7 rounded-md p-2"
+                                    />
+                                </label>
+                            </div>
                             {/*  */}
                             <div className="flex space-x-11">
                                 <div>
@@ -97,13 +113,13 @@ export default function Reservation({ Room }) {
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
-                                            {Room[1].map((room) => (
+                                            {Room.map((room) => (
                                                 <option
-                                                    key={room.jenis}
-                                                    value={room.jenis}
+                                                    key={`${room.nomor_kamar}-${room.roomtype.jenis}`}
+                                                    value={room.roomtype.jenis}
                                                     className=""
                                                 >
-                                                    {room.jenis}
+                                                    {room.roomtype.jenis}
                                                 </option>
                                             ))}
                                         </select>
@@ -118,7 +134,7 @@ export default function Reservation({ Room }) {
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
-                                            {Room[0].map((room) => (
+                                            {Room.map((room) => (
                                                 <option
                                                     key={room.nomor_kamar}
                                                     value={`${room.nomor_kamar}`}
@@ -178,6 +194,7 @@ export default function Reservation({ Room }) {
                 <div className="border p-5 bg-white w-1/2 m-5 rounded-xl shadow-md space-y-5">
                     <div>
                         <h1 className="text-2xl font-semibold mb-2">Invoice</h1>
+                        <p>Make sure again the data is correct or not!!</p>
                         <hr />
                     </div>
                     <div className="flex w-2/3 justify-between">
@@ -189,10 +206,18 @@ export default function Reservation({ Room }) {
                         <p>{showdata ? formData.nik : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
+                        <h1 className="text-md font-semibold">Nomor Telepon</h1>
+                        <p>{showdata ? formData.no_hp : null}</p>
+                    </div>
+                    <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">
                             Room Reservased
                         </h1>
-                        <p>{showdata ? `${formData.roomNumber}` : null}</p>
+                        <p>
+                            {showdata
+                                ? `${formData.roomNumber - formData.roomType}`
+                                : null}
+                        </p>
                     </div>
                     <div className="flex w-2/3 justify-between">
                         <h1 className="text-md font-semibold">Check In</h1>
