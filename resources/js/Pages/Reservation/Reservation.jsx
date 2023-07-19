@@ -177,7 +177,6 @@ export default function Reservation({ Room }) {
                                                         </option>
                                                     );
                                                 }
-                                                // Jika tidak memenuhi kondisi, return null untuk menghilangkan opsi dari tampilan
                                                 return null;
                                             })}
                                         </select>
