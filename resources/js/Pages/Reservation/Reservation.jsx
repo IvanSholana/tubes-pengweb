@@ -59,7 +59,7 @@ export default function Reservation({ Room }) {
     const uniqueRoomTypes = new Set();
     return (
         <>
-            <div className="container flex">
+            <div className="container flex" data->
                 <div className="border p-5 bg-white w-1/2 m-5 rounded-xl shadow-md relative overflow-hidden">
                     <form onSubmit={handleFormSubmit} method="post">
                         <div className="z-40 w-full space-y-3">
