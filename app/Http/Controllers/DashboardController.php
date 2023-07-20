@@ -19,4 +19,8 @@ class DashboardController extends Controller
         $allroom = hotelroom::with('roomtype')->get();
         return inertia('Main/Dashboard',['page' =>'Reservation','rooms'=>$allroom]);
     }
+
+    public function showfacility(){
+        return inertia('Main/Dashboard',['page'=>'Facility']);
+    }
 }

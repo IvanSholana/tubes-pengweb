@@ -281,11 +281,12 @@ export default function Reservation({ Room }) {
                                     room.roomtype.harga * differenceInDays;
                                 return (
                                     <p>
-                                        Rp
-                                        {showdata
-                                            ? room.roomtype.harga *
-                                              differenceInDays
-                                            : null}
+                                        {`Rp${
+                                            showdata
+                                                ? room.roomtype.harga *
+                                                  differenceInDays
+                                                : null
+                                        }`}
                                     </p>
                                 );
                             }
