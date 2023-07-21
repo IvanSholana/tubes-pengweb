@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\EmployeaccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
 Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
 Route::get('/facility', [DashboardController::class,'showfacility']);
 Route::post('/create', [ReservationController::class,'insertdata']);
+Route::get('/login', [EmployeaccountController::class,'login']);
