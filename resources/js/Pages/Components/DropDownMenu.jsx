@@ -12,6 +12,7 @@ function DropDownMenu() {
                     <DropdownMenu.Content
                         className="min-w-[220px] bg-white rounded-md p-2 shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
                         sideOffset={5}
+                        data-theme="light"
                     >
                         <button className="w-full text-start">
                             <DropdownMenu.Item>
@@ -23,7 +24,9 @@ function DropDownMenu() {
                         <button className="w-full text-start">
                             <DropdownMenu.Item>
                                 {" "}
-                                <p className="p-2">Logout</p>
+                                <a href="/login">
+                                    <p className="p-2">Logout</p>
+                                </a>
                             </DropdownMenu.Item>
                         </button>
                     </DropdownMenu.Content>

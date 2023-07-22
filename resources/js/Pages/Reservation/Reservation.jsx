@@ -59,7 +59,7 @@ export default function Reservation({ Room }) {
     const uniqueRoomTypes = new Set();
     return (
         <>
-            <div className="container flex" data->
+            <div className="container flex bg-slate-200" data-theme="light">
                 <div className="border p-5 bg-white w-1/2 m-5 rounded-xl shadow-md relative overflow-hidden">
                     <form onSubmit={handleFormSubmit} method="post">
                         <div className="z-40 w-full space-y-3">
@@ -303,7 +303,10 @@ export default function Reservation({ Room }) {
                                 </AlertDialog.Trigger>
                                 <AlertDialog.Portal>
                                     <AlertDialog.Overlay className="bg-black opacity-50 data-[state=open]:animate-overlayShow fixed inset-0 z-50" />
-                                    <AlertDialog.Content className="z-50 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[500px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+                                    <AlertDialog.Content
+                                        data-theme="light"
+                                        className="z-50 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[500px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none"
+                                    >
                                         <AlertDialog.Title className="text-mauve12 m-0 text-[17px] font-medium z-50">
                                             Konfirmasi Pemesanan
                                         </AlertDialog.Title>

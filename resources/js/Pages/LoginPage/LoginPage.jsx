@@ -15,11 +15,11 @@ export default function Loginpage() {
                     ></div>
                     <div id="LoginForm" className="w-1/2 p-10 flex">
                         <div id="header" className="w-full self-center">
-                            <h1 className="font-semibold text-3xl">
-                                Login Page
+                            <h1 className="font-semibold text-3xl text-center">
+                                Hello Again!
                             </h1>
-                            <p className=" text-sm mt-1 mb-1 text-slate-500">
-                                Please input your data account!
+                            <p className=" text-sm mt-1 mb-1 text-slate-500 text-center">
+                                Have a nice day, and have fun while working! 😘
                             </p>
                             <hr />
                             <div id="form" className="">
@@ -34,7 +34,7 @@ export default function Loginpage() {
                                         <br />
                                         <input
                                             type="text"
-                                            className="border w-full rounded-md p-1 text-sm"
+                                            className="border w-full rounded-md px-1 text-sm bg-slate-200 py-2 mt-2"
                                             placeholder="Enter your username"
                                         />
                                     </div>
@@ -48,11 +48,11 @@ export default function Loginpage() {
                                         <br />
                                         <input
                                             type="password"
-                                            className="border w-full rounded-md p-1 text-sm"
+                                            className="border w-full rounded-md px-1 text-sm bg-slate-200 py-2 mt-2"
                                             placeholder="Enter your password"
                                         />
                                     </div>
-                                    <button className=" bg-slate-800 text-white w-full py-1 mt-5 rounded-md">
+                                    <button className=" bg-slate-800 text-white w-full py-2 mt-10 rounded-md">
                                         LOGIN
                                     </button>
                                 </form>
