@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 
-export default function Loginpage() {
+export default function Loginpage({ errors }) {
     const [formData, setFormData] = useState({
-        username: "",
+        email: "",
         password: "",
     });
 
@@ -57,20 +57,25 @@ export default function Loginpage() {
                             </p>
                             <hr />
                             <div>
+                                {errors.username && (
+                                    <div className="text-red-500 mt-2">
+                                        {errors.username}
+                                    </div>
+                                )}
                                 <form onSubmit={ConfirmLogin}>
                                     <div className="mb-5 mt-5">
                                         <label
                                             htmlFor=""
                                             className=" font-semibold"
                                         >
-                                            Username
+                                            Email
                                         </label>
                                         <br />
                                         <input
-                                            type="text"
+                                            type="email"
                                             className="border w-full rounded-md px-1 text-sm bg-slate-200 py-2 mt-2"
-                                            placeholder="Enter your username"
-                                            name="username"
+                                            placeholder="Enter your email"
+                                            name="email"
                                             onChange={handleInputChange}
                                         />
                                     </div>

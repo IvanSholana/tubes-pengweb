@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -13,7 +16,18 @@ class LoginController extends Controller
 
     public function loginprogress(Request $request)
     {
-        // Validasi data login jika diperlukan
-        dd($request->all());
+        $request->validate([
+                'email' => 'required',
+                'password' => 'required'
+            ]);
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        if(Auth::attempt($data)){
+            return Inertia::location('dashboard');
+        }else{
+            throw ValidationException::withMessages(['username' => 'Username atau Password Salah']);
+        };
     }
 }
