@@ -27,7 +27,14 @@ const TodayDate = () => {
     return <>{currentDate}</>;
 };
 
-export default function DashboarShow({ rowCount, page, rooms }) {
+export default function DashboarShow({
+    rowCount,
+    page,
+    rooms,
+    username,
+    userposition,
+}) {
+    console.log(username);
     return (
         <>
             {/* DASHBOARD LIST */}
@@ -108,10 +115,10 @@ export default function DashboarShow({ rowCount, page, rooms }) {
                                 className="border-e pe-5 me-3 self-center"
                             >
                                 <h1 className="text-3xl font-semibold">
-                                    Hi! Ivan Sholana
+                                    Hi! {username}
                                 </h1>
                                 <p className="text-sm text-stone-700">
-                                    Senior Manager
+                                    {userposition}
                                 </p>
                             </div>
                             <div

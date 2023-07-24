@@ -7,13 +7,24 @@ use App\Models\customer;
 use App\Models\roomtype;
 use App\Models\hotelroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function showdashboard(){
-        $rowCount = customer::getRowCount();
-        return inertia('Main/Dashboard',['rowCount'=>$rowCount,'page' =>'Dashboard']);
-    }
+        public function showDashboard()
+        {
+            $rowCount = customer::getRowCount();
+
+            $userName = Auth::user()->name;
+            $position = Auth::user()->posisi;
+
+            return Inertia::render('Main/Dashboard', [
+                'rowCount' => $rowCount,
+                'page' => 'Dashboard',
+                'username' => $userName,
+                'userposition' => $position,
+            ]);
+        }
 
     public function showreservation(){
         $allroom = hotelroom::with('roomtype')->get();

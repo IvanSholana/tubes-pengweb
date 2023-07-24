@@ -19,15 +19,20 @@ use App\Http\Controllers\ReservationController;
 */
 
 
-Route::get('/',[LoginController::class, 'redirectToLogin'])->middleware('guest');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
+    Route::get('/dashboard/resepsionis  ', [DashboardController::class, 'showdashboard']);
+    Route::get('/dashboard/operator  ', [DashboardController::class, 'showdashboard']);
+    Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
+    Route::get('/facility', [DashboardController::class,'showfacility']);
+    Route::post('/create', [ReservationController::class,'insertdata']);
+    Route::get('/sesi/logout', [LoginController::class, 'logout']);
+});
 
-Route::get('/dashboard  ', [DashboardController::class, 'showdashboard'])->middleware('auth');
-Route::get('/reservation  ', [DashboardController::class, 'showreservation'])->middleware('auth');
-Route::get('/facility', [DashboardController::class,'showfacility'])->middleware('auth');
-Route::post('/create', [ReservationController::class,'insertdata'])->middleware('auth');
-
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
-Route::post('/sesi/login', [LoginController::class, 'loginprogress'])->name('login.progress')->middleware('guest');
-Route::get('/sesi/logout', [LoginController::class, 'logout']);
-Route::get('/register', [LoginController::class, 'showRegistration']);
-Route::post('/sesi/register', [LoginController::class, 'createAccount']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/sesi/login', [LoginController::class, 'loginprogress'])->name('login.progress');
+    Route::get('/',[LoginController::class, 'redirectToLogin']);
+    Route::get('/register', [LoginController::class, 'showRegistration']);
+    Route::post('/sesi/register', [LoginController::class, 'createAccount']);
+});

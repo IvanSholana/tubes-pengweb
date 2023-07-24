@@ -31,8 +31,12 @@ class LoginController extends Controller
             'password' => $request->password
         ];
         if(Auth::attempt($data)){
-            $request->session()->regenerate();
-            return Inertia::location('dashboard');
+            if(Auth::user()->posisi == "Resepsionis"){
+                return Inertia::location('dashboard/resepsionis');
+            }else if(Auth::user()->posisi == "Operator"){
+                return Inertia::location('dashboard/operator');
+            }
+            
         }else{
             throw ValidationException::withMessages(['username' => 'Username atau Password Salah']);
         };
