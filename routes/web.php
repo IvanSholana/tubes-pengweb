@@ -18,9 +18,7 @@ use App\Http\Controllers\ReservationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/welcome', function () {
     return Inertia::render('Test');
@@ -32,4 +30,5 @@ Route::get('/facility', [DashboardController::class,'showfacility']);
 Route::post('/create', [ReservationController::class,'insertdata']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/loginprogress', [LoginController::class, 'loginprogress'])->name('login.progress');
