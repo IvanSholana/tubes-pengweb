@@ -21,8 +21,8 @@ use App\Http\Controllers\ReservationController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
-    Route::get('/dashboard/resepsionis  ', [DashboardController::class, 'showdashboard']);
-    Route::get('/dashboard/operator  ', [DashboardController::class, 'showdashboard']);
+    Route::get('/dashboard/resepsionis  ', [DashboardController::class, 'showdashboard'])->middleware('userAkses:resepsionis');
+    Route::get('/dashboard/operator  ', [DashboardController::class, 'showdashboard'])->middleware('userAkses:operator');
     Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
     Route::get('/facility', [DashboardController::class,'showfacility']);
     Route::post('/create', [ReservationController::class,'insertdata']);
