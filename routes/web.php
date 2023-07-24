@@ -31,3 +31,4 @@ Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
 Route::get('/facility', [DashboardController::class,'showfacility']);
 Route::post('/create', [ReservationController::class,'insertdata']);
 Route::get('/login', [EmployeaccountController::class,'login']);
+Route::post('/loginprogress', [EmployeaccountController::class, 'loginprogress']);

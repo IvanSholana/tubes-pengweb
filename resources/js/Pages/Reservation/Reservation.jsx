@@ -19,16 +19,16 @@ export default function Reservation({ Room }) {
 
     const handleFormSubmit = () => {
         // Mengumpulkan data form yang diisi oleh pengguna
-        const {
-            name,
-            nik,
-            no_hp,
-            roomType,
-            roomNumber,
-            checkInDate,
-            checkOutDate,
-            harga,
-        } = formData;
+        // const {
+        //     name,
+        //     nik,
+        //     no_hp,
+        //     roomType,
+        //     roomNumber,
+        //     checkInDate,
+        //     checkOutDate,
+        //     harga,
+        // } = formData;
 
         // Mengirim data ke rute Laravel menggunakan inertia.post()
         Inertia.post("/create", formData, {
