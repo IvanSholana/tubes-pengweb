@@ -2,10 +2,10 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservationController;
-use App\Http\Controllers\EmployeaccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +30,6 @@ Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
 Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
 Route::get('/facility', [DashboardController::class,'showfacility']);
 Route::post('/create', [ReservationController::class,'insertdata']);
-Route::get('/login', [EmployeaccountController::class,'login']);
-Route::post('/loginprogress', [EmployeaccountController::class, 'loginprogress']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/loginprogress', [LoginController::class, 'loginprogress'])->name('login.progress');

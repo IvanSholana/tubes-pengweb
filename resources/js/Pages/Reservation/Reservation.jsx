@@ -18,18 +18,6 @@ export default function Reservation({ Room }) {
     });
 
     const handleFormSubmit = () => {
-        // Mengumpulkan data form yang diisi oleh pengguna
-        // const {
-        //     name,
-        //     nik,
-        //     no_hp,
-        //     roomType,
-        //     roomNumber,
-        //     checkInDate,
-        //     checkOutDate,
-        //     harga,
-        // } = formData;
-
         // Mengirim data ke rute Laravel menggunakan inertia.post()
         Inertia.post("/create", formData, {
             onSuccess: () => {
@@ -61,7 +49,7 @@ export default function Reservation({ Room }) {
         <>
             <div className="container flex bg-slate-200" data-theme="light">
                 <div className="border p-5 bg-white w-1/2 m-5 rounded-xl shadow-md relative overflow-hidden">
-                    <form onSubmit={handleFormSubmit} method="post">
+                    <form onSubmit={handleFormSubmit} method="POST">
                         <div className="z-40 w-full space-y-3">
                             <div>
                                 <h1 className="text-2xl font-semibold mb-2 z-40">
