@@ -3,16 +3,18 @@ import { Inertia } from "@inertiajs/inertia";
 
 export default function Loginpage({ errors }) {
     const [formData, setFormData] = useState({
+        name: "",
         email: "",
+        posisi: "Resepsionis",
         password: "",
     });
 
     const ConfirmLogin = () => {
         // Mengirim data ke rute Laravel menggunakan inertia.post()
-        Inertia.post("/sesi/login", formData, {
+        Inertia.post("/sesi/register", formData, {
             onSuccess: () => {
                 // Redirect ke halaman lain jika diperlukan
-                Inertia.visit("/dashboard");
+                Inertia.visit("/login");
             },
             onError: (errors) => {
                 // Penanganan kesalahan jika terjadi
@@ -31,7 +33,6 @@ export default function Loginpage({ errors }) {
 
     const handleClick = (event) => {
         event.preventDefault();
-        // Kirim data ke server saat tombol LOGIN ditekan
         ConfirmLogin();
     };
 
@@ -50,10 +51,11 @@ export default function Loginpage({ errors }) {
                     <div id="LoginForm" className="w-1/2 p-10 flex">
                         <div id="header" className="w-full self-center">
                             <h1 className="font-semibold text-3xl text-center">
-                                Hello Again!
+                                Ada Orang Baru Nich!!
                             </h1>
                             <p className=" text-sm mt-1 mb-1 text-slate-500 text-center">
-                                Have a nice day, and have fun while working! 😘
+                                Hallo, salken kak. Silahkan isi data di bawah
+                                ini!😘
                             </p>
                             <hr />
                             <div>
@@ -63,6 +65,22 @@ export default function Loginpage({ errors }) {
                                     </div>
                                 )}
                                 <form onSubmit={ConfirmLogin}>
+                                    <div className="mb-5 mt-5">
+                                        <label
+                                            htmlFor=""
+                                            className=" font-semibold"
+                                        >
+                                            Nama Lengkap
+                                        </label>
+                                        <br />
+                                        <input
+                                            type="text"
+                                            className="border w-full rounded-md px-1 text-sm bg-slate-200 py-2 mt-2"
+                                            placeholder="Enter your name"
+                                            name="name"
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
                                     <div className="mb-5 mt-5">
                                         <label
                                             htmlFor=""
@@ -78,6 +96,28 @@ export default function Loginpage({ errors }) {
                                             name="email"
                                             onChange={handleInputChange}
                                         />
+                                    </div>
+                                    <div className="mb-5 mt-5">
+                                        <label
+                                            htmlFor=""
+                                            className=" font-semibold"
+                                        >
+                                            Jabatan
+                                        </label>
+                                        <br />
+                                        <select
+                                            name="posisi"
+                                            id="posisi"
+                                            onChange={handleInputChange}
+                                            className="border w-full rounded-md px-1 text-sm bg-slate-200 py-2 mt-2"
+                                        >
+                                            <option value="Resepsionis">
+                                                Resepsionis
+                                            </option>
+                                            <option value="Operator">
+                                                Operator
+                                            </option>
+                                        </select>
                                     </div>
                                     <div>
                                         <label
@@ -99,15 +139,15 @@ export default function Loginpage({ errors }) {
                                         onClick={handleClick}
                                         className=" bg-slate-800 text-white w-full py-2 mt-10 rounded-md"
                                     >
-                                        LOGIN
+                                        REGISTER
                                     </button>
                                     <p className="mt-2">
-                                        Belum punya akun?{" "}
+                                        Sudah punya akun?{" "}
                                         <a
-                                            href="/register"
+                                            href="/login"
                                             className="underline hover:text-cyan-500"
                                         >
-                                            Register
+                                            Login
                                         </a>{" "}
                                     </p>
                                 </form>

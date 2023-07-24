@@ -29,3 +29,5 @@ Route::post('/create', [ReservationController::class,'insertdata'])->middleware(
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/sesi/login', [LoginController::class, 'loginprogress'])->name('login.progress')->middleware('guest');
 Route::get('/sesi/logout', [LoginController::class, 'logout']);
+Route::get('/register', [LoginController::class, 'showRegistration']);
+Route::post('/sesi/register', [LoginController::class, 'createAccount']);
