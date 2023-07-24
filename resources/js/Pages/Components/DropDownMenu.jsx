@@ -24,7 +24,7 @@ function DropDownMenu() {
                         <button className="w-full text-start">
                             <DropdownMenu.Item>
                                 {" "}
-                                <a href="/login">
+                                <a href="/sesi/logout">
                                     <p className="p-2">Logout</p>
                                 </a>
                             </DropdownMenu.Item>

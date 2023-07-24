@@ -9,7 +9,7 @@ export default function Loginpage({ errors }) {
 
     const ConfirmLogin = () => {
         // Mengirim data ke rute Laravel menggunakan inertia.post()
-        Inertia.post("/loginprogress", formData, {
+        Inertia.post("/sesi/login", formData, {
             onSuccess: () => {
                 // Redirect ke halaman lain jika diperlukan
                 Inertia.visit("/dashboard");
