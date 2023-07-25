@@ -31,7 +31,6 @@ export default function Loginpage({ errors }) {
 
     const handleClick = (event) => {
         event.preventDefault();
-        // Kirim data ke server saat tombol LOGIN ditekan
         ConfirmLogin();
     };
 
