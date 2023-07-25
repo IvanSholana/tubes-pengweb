@@ -56,7 +56,7 @@ const FacilityForm = ({ DataFacility }) => {
             <div className="p-5">
                 <Dialog.Root>
                     <Dialog.Trigger asChild>
-                        <button className="hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-800 text-white px-[15px] font-medium leading-none shadow-md focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none">
+                        <button className=" ms-3 mt-5 -mb-12 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-800 text-white px-[15px] font-medium leading-none shadow-md focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none">
                             Tambah Fasilitas
                         </button>
                     </Dialog.Trigger>
