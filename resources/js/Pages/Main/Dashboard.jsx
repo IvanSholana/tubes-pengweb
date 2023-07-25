@@ -8,7 +8,7 @@ import FastfoodIcon from "@mui/icons-material/Fastfood";
 import DropDownMenu from "../Components/DropDownMenu";
 import MainBoard from "../Dasboard/Dashboard Components/MainBoard";
 import Reservation from "../Reservation/Reservation";
-import FacilityForm from "../Facility/facilityform";
+import FacilityForm from "../Facility/Facilityform";
 
 const TodayDate = () => {
     const [currentDate, setCurrentDate] = useState("");
@@ -33,8 +33,9 @@ export default function DashboarShow({
     rooms,
     username,
     userposition,
+    facilityData,
 }) {
-    console.log(username);
+    console.log(facilityData);
     return (
         <>
             {/* DASHBOARD LIST */}
@@ -138,7 +139,7 @@ export default function DashboarShow({
                         ) : page == "Reservation" ? (
                             <Reservation Room={rooms} />
                         ) : page == "Facility" ? (
-                            <FacilityForm />
+                            <FacilityForm DataFacility={facilityData} />
                         ) : null}
                     </div>
                 </div>

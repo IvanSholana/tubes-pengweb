@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Inertia } from "@inertiajs/inertia";
 
-const DialogDemo = () => {
+const FacilityForm = ({ DataFacility }) => {
+    console.log(
+        DataFacility.map((data) => {
+            console.log(data);
+        })
+    );
     const [formFacility, setFormData] = useState({
         judul: "",
         deskripsi: "",
@@ -125,25 +130,29 @@ const DialogDemo = () => {
                     </Dialog.Portal>
                 </Dialog.Root>
             </div>
-            <div className="p-5">
-                <div className="card w-96 bg-base-100 shadow-xl">
-                    <figure>
-                        <img
-                            src="https://toohotel.com/wp-content/uploads/2022/09/TOO_restaurant_Panoramique_vue_Paris_Seine_Tour_Eiffel_2.jpg"
-                            alt="Shoes"
-                        />
-                    </figure>
-                    <div className="card-body">
-                        <h2 className="card-title">Restaurant!</h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+            <div className="p-5 grid grid-cols-3">
+                {DataFacility.map((data) => (
+                    <div
+                        key={data.id}
+                        className="card w-82 bg-base-100 shadow-xl m-2"
+                    >
+                        <figure>
+                            <img src={`/foto/${data.foto}`} alt={data.judul} />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">{data.judul}!</h2>
+                            <p>{data.deskripsi}</p>
+                            <div className="card-actions justify-end">
+                                <button className="btn btn-primary">
+                                    Lihat Fasilitas
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
         </>
     );
 };
 
-export default DialogDemo;
+export default FacilityForm;

@@ -13,5 +13,7 @@ class facility extends Model
         'deskripsi',
         'foto'
     ];
-
+    public static function getAlldata(){
+        return self::all();
+    }
 }

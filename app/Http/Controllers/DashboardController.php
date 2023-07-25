@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\customer;
+use App\Models\facility;
 use App\Models\roomtype;
 use App\Models\hotelroom;
 use Illuminate\Http\Request;
@@ -32,6 +33,9 @@ class DashboardController extends Controller
     }
 
     public function showfacility(){
-        return inertia('Main/Dashboard',['page'=>'Facility']);
+        $dataFacility = facility::getAlldata();
+       
+
+        return inertia('Main/Dashboard',['page'=>'Facility','facilityData'=>$dataFacility]);
     }
 }
