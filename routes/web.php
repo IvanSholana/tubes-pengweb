@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HotelroomController;
 use App\Http\Controllers\ReservationController;
 
 /*
@@ -27,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
     Route::get('/facility', [DashboardController::class,'showfacility']);
     Route::get('/hotelroom', [DashboardController::class,'showhotelroom']);
+    Route::post('/hotelroom/create', [RoomtypeController::class,'createRoom']);
     Route::post('/create', [ReservationController::class,'insertdata']);
     Route::get('/sesi/logout', [LoginController::class, 'logout']);
     Route::post('facility/create',[FacilityController::class,'CreateFacility']);

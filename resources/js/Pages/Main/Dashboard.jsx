@@ -142,7 +142,7 @@ export default function DashboarShow({
                         ) : page == "Facility" ? (
                             <FacilityForm DataFacility={facilityData} />
                         ) : page == "Hotelroom" ? (
-                            <Hotelroom />
+                            <Hotelroom Room={rooms} />
                         ) : null}
                     </div>
                 </div>
