@@ -38,4 +38,8 @@ class DashboardController extends Controller
 
         return inertia('Main/Dashboard',['page'=>'Facility','facilityData'=>$dataFacility]);
     }
+
+    public function showhotelroom(){
+        return inertia('Main/Dashboard',['page'=>'Hotelroom']);
+    }
 }

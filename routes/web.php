@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/operator  ', [DashboardController::class, 'showdashboard'])->middleware('userAkses:operator');
     Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
     Route::get('/facility', [DashboardController::class,'showfacility']);
+    Route::get('/hotelroom', [DashboardController::class,'showhotelroom']);
     Route::post('/create', [ReservationController::class,'insertdata']);
     Route::get('/sesi/logout', [LoginController::class, 'logout']);
     Route::post('facility/create',[FacilityController::class,'CreateFacility']);

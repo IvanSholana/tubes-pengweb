@@ -9,6 +9,7 @@ import DropDownMenu from "../Components/DropDownMenu";
 import MainBoard from "../Dasboard/Dashboard Components/MainBoard";
 import Reservation from "../Reservation/Reservation";
 import FacilityForm from "../Facility/Facilityform";
+import Hotelroom from "../HotelRoom/HotelRoomPage";
 
 const TodayDate = () => {
     const [currentDate, setCurrentDate] = useState("");
@@ -82,7 +83,7 @@ export default function DashboarShow({
                                     <span className="flex align-middle  space-x-1">
                                         <BedIcon />
                                         <p className="font-semibold">
-                                            Room Information
+                                            <a href="/hotelroom">Hotel Room</a>
                                         </p>
                                     </span>
                                 </button>
@@ -140,6 +141,8 @@ export default function DashboarShow({
                             <Reservation Room={rooms} />
                         ) : page == "Facility" ? (
                             <FacilityForm DataFacility={facilityData} />
+                        ) : page == "Hotelroom" ? (
+                            <Hotelroom />
                         ) : null}
                     </div>
                 </div>

@@ -19,6 +19,7 @@ export default function MainBoard(props) {
                         <p className="text-base">
                             Information about reservation
                         </p>
+                        <hr />
                     </div>
                     {/* INFORMATION */}
                     <div id="information" className="flex gap-5 w-full">
