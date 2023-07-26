@@ -40,7 +40,7 @@ export default function DashboarShow({
     return (
         <>
             {/* DASHBOARD LIST */}
-            <div className="p-5 bg-slate-200 h-screen" data-theme="light">
+            <div className="p-5 bg-slate-200 h-full" data-theme="light">
                 <div className="flex p-5 rounded-3xl bg-white">
                     <div id="dashboard-menu" className="w-1/6 px-2 pt-5 me-5">
                         <div className="mb-2 font-bold text-center text-3xl">

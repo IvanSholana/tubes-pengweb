@@ -20,4 +20,8 @@ class roomtype extends Model
     {
         return $this->hasMany(hotelroom::class, 'jenis_kamar', 'jenis');
     }
+    protected $fillable = [
+        'jenis','harga','kapasitas','foto'
+    ];
+
 }

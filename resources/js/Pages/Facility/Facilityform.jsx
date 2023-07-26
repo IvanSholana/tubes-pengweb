@@ -3,11 +3,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Inertia } from "@inertiajs/inertia";
 
 const FacilityForm = ({ DataFacility }) => {
-    console.log(
-        DataFacility.map((data) => {
-            console.log(data);
-        })
-    );
     const [formFacility, setFormData] = useState({
         judul: "",
         deskripsi: "",
@@ -31,11 +26,10 @@ const FacilityForm = ({ DataFacility }) => {
     const handleInputChange = (event) => {
         const { name, value, type } = event.target;
 
-        // Special handling for file input
         if (type === "file") {
             setFormData((prevFormData) => ({
                 ...prevFormData,
-                [name]: event.target.files[0], // Use the selected file object
+                [name]: event.target.files[0],
             }));
         } else {
             // For other inputs (text, textarea, etc.)
