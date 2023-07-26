@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hotelrooms', function (Blueprint $table) {
-            $table->bigIncrements('nomor_kamar');
+            $table->integer('nomor_kamar')->unsigned();
+            $table->primary('nomor_kamar');
         });
     }
 

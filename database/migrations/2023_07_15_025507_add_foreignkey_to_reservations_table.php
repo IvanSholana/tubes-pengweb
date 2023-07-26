@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reservations', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_kamar');
+            $table->integer('nomor_kamar')->unsigned();
             $table->foreign('no_nik')->references('no_nik')->on('customers')->onDelete('cascade');
-            $table->foreign('id_kamar')->references('nomor_kamar')->on('hotelrooms')->onDelete('cascade');
+            $table->foreign('nomor_kamar')->references('nomor_kamar')->on('hotelrooms')->onDelete('cascade');
         });
     }
 
