@@ -41,7 +41,7 @@ class DashboardController extends Controller
 
     public function showhotelroom(){
         $roomType = roomtype::getAlldata();
-        $hotelroom = hotelroom::getAlldata();
+        $hotelroom = hotelroom::with('roomtype')->get();
         return inertia('Main/Dashboard',['page'=>'Hotelroom','rooms' => [$roomType,$hotelroom]]);
     }
 }

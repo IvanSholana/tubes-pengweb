@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/facility', [DashboardController::class,'showfacility']);
     Route::get('/hotelroom', [DashboardController::class,'showhotelroom']);
     Route::post('/hotelroom/create', [RoomtypeController::class,'createRoom']);
+    Route::post('/hotelroom/createroom', [HotelroomController::class,'createRoom']);
     Route::post('/create', [ReservationController::class,'insertdata']);
     Route::get('/sesi/logout', [LoginController::class, 'logout']);
     Route::post('facility/create',[FacilityController::class,'CreateFacility']);

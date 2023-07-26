@@ -3,16 +3,36 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Inertia } from "@inertiajs/inertia";
 
 export default function RoomPage({ Room }) {
-    const [formRoom, setFormData] = useState({
+    console.log(Room);
+    const [typeRoom, setFormData] = useState({
         jenis: "",
         harga: 0,
         kapasitas: 0,
         foto: null,
     });
 
+    const [formRoom, setRoomData] = useState({
+        nomor_kamar: 0,
+        jenis_kamar: "",
+        status: "Available",
+    });
+
     const handleFormSubmit = () => {
         // Mengirim data ke rute Laravel menggunakan inertia.post()
-        Inertia.post("/hotelroom/create", formRoom, {
+        Inertia.post("/hotelroom/create", typeRoom, {
+            onSuccess: () => {
+                // Redirect ke halaman lain jika diperlukan
+                Inertia.visit("/hotelroom");
+            },
+            onError: (errors) => {
+                // Penanganan kesalahan jika terjadi
+                console.error(errors);
+            },
+        });
+    };
+
+    const handleFormSubmit2 = () => {
+        Inertia.post("/hotelroom/createroom", formRoom, {
             onSuccess: () => {
                 // Redirect ke halaman lain jika diperlukan
                 Inertia.visit("/hotelroom");
@@ -41,9 +61,23 @@ export default function RoomPage({ Room }) {
         }
     };
 
+    const handleInputChange2 = (event) => {
+        const { name, value } = event.target;
+        // For other inputs (text, textarea, etc.)
+        setRoomData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
+
     const handleClick = (event) => {
         event.preventDefault();
         handleFormSubmit();
+    };
+
+    const handleClick2 = (event) => {
+        event.preventDefault();
+        handleFormSubmit2();
     };
     return (
         <>
@@ -69,16 +103,13 @@ export default function RoomPage({ Room }) {
                                 </Dialog.Description>
                                 <form method="POST">
                                     <fieldset className="mb-[15px] flex items-center gap-5">
-                                        <label
-                                            className="text-violet11 w-[100px] text-right text-[15px] font-semibold"
-                                            htmlFor="name"
-                                        >
+                                        <label className="text-violet11 w-[100px] text-right text-[15px] font-semibold">
                                             Nomor Kamar
                                         </label>
                                         <input
                                             className="focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                                            name="judul"
-                                            onChange={handleInputChange}
+                                            name="nomor_kamar"
+                                            onChange={handleInputChange2}
                                         />
                                     </fieldset>
                                     <fieldset className="mb-[15px] flex items-center gap-5">
@@ -86,9 +117,9 @@ export default function RoomPage({ Room }) {
                                             Jenis Kamar
                                         </label>
                                         <select
-                                            name="jenis"
-                                            id=""
+                                            name="jenis_kamar"
                                             className="bg-slate-200 py-1 px-2"
+                                            onChange={handleInputChange2}
                                         >
                                             {Room[0].map((room) => (
                                                 <option
@@ -103,7 +134,7 @@ export default function RoomPage({ Room }) {
                                     <div className="mt-[25px] flex justify-end">
                                         <Dialog.Close asChild>
                                             <button
-                                                // onClick={handleClick}
+                                                onClick={handleClick2}
                                                 className=" bg-slate-900 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
                                             >
                                                 Save Data
@@ -222,17 +253,30 @@ export default function RoomPage({ Room }) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="text-center border bg-white">
-                                <td>1</td>
-                                <td>Deluxe</td>
-                                <td>2 Orang</td>
-                                <td>Rp1.000.000</td>
-                                <td>
-                                    <div className=" bg-red-700 text-white m-2 py-1 rounded-md">
-                                        Booked
-                                    </div>
-                                </td>
-                            </tr>
+                            {Room[1].map((room) => (
+                                <tr
+                                    key={room.nomor_kamar}
+                                    className="text-center border bg-white"
+                                >
+                                    <td>{room.nomor_kamar}</td>
+                                    <td>{room.jenis_kamar}</td>
+                                    <td>{room.roomtype.kapasitas}</td>
+                                    <td>Rp{room.roomtype.harga}</td>
+                                    <td>
+                                        {!(
+                                            room.roomtype.status == "Available"
+                                        ) ? (
+                                            <div className="bg-green-700 text-white m-2 py-1 rounded-md">
+                                                Available
+                                            </div>
+                                        ) : (
+                                            <div className="bg-red-700 text-white m-2 py-1 rounded-md">
+                                                Booked
+                                            </div>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

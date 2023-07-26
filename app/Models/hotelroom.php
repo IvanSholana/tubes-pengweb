@@ -13,8 +13,16 @@ class hotelroom extends Model
     public static function getAllData(){
         return self::all();
     }
+
+    protected $fillable = [
+        'nomor_kamar',
+        'jenis_kamar',
+        'status'
+    ];
+
     public function roomType()
     {
         return $this->belongsTo(roomtype::class, 'jenis_kamar', 'jenis');
+        
     }
 }
