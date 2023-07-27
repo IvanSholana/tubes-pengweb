@@ -30,5 +30,8 @@ class hotelroom extends Model
     {
         return $this->belongsTo(roomtype::class, 'jenis_kamar', 'jenis');
     }
+    public static function CountAllRoom(){
+        return self::count();
+    }
 
 }

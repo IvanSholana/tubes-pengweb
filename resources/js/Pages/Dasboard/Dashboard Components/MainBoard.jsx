@@ -37,7 +37,9 @@ export default function MainBoard(props) {
                             className=" bg-sky-300 p-5 rounded-xl w-2/6 shadow-md"
                         >
                             <p>Free Rooms</p>
-                            <h1 className="text-4xl font-semibold">120</h1>
+                            <h1 className="text-4xl font-semibold">
+                                {props.AllData[2]}
+                            </h1>
                         </div>
                     </div>
                     {/* TABLE RESERVATION ROOM */}

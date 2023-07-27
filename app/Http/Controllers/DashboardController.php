@@ -21,12 +21,13 @@ class DashboardController extends Controller
             ->select('id', 'no_nik', 'total_harga', 'check_in', 'check_out', 'nomor_kamar')
             ->get();
             $CountData = reservation::CountData();
+            $FreeRoom = hotelroom::CountAllRoom();
 
             $userName = Auth::user()->name;
             $position = Auth::user()->posisi;
 
             return Inertia::render('Main/Dashboard', [
-                'DataReservation' => [$AllData,$CountData], 
+                'DataReservation' => [$AllData,$CountData,$FreeRoom - $CountData], 
                 'page' => 'Dashboard',
                 'username' => $userName,
                 'userposition' => $position,

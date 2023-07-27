@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function RoomReservationCard(DataReservation) {
-    console.log(DataReservation.Data.hotel_room.nomor_kamar);
     return (
         <>
             {/* CARD RESERVATIOM START */}
