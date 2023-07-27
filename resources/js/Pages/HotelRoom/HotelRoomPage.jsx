@@ -263,9 +263,7 @@ export default function RoomPage({ Room }) {
                                     <td>{room.roomtype.kapasitas}</td>
                                     <td>Rp{room.roomtype.harga}</td>
                                     <td>
-                                        {!(
-                                            room.roomtype.status == "Available"
-                                        ) ? (
+                                        {room.status == "Available" ? (
                                             <div className="bg-green-700 text-white m-2 py-1 rounded-md">
                                                 Available
                                             </div>

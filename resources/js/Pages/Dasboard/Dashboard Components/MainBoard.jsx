@@ -29,7 +29,7 @@ export default function MainBoard(props) {
                         >
                             <p>Total Booking</p>
                             <h1 className="text-4xl font-semibold">
-                                {props.Count}
+                                {props.AllData[1]}
                             </h1>
                         </div>
                         <div
@@ -42,10 +42,9 @@ export default function MainBoard(props) {
                     </div>
                     {/* TABLE RESERVATION ROOM */}
                     <div id="table-room" className="overflow-auto h-36">
-                        <RoomReservationCard />
-                        <RoomReservationCard />
-                        <RoomReservationCard />
-                        <RoomReservationCard />
+                        {props.AllData[0].map((reservation) => (
+                            <RoomReservationCard Data={reservation} />
+                        ))}
                     </div>
                 </div>
                 {/* CUSTOMER CHAT */}

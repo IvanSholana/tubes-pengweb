@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\reservation;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class customer extends Model
 {
@@ -16,6 +17,12 @@ class customer extends Model
         'nama_pelanggan',
         'no_telepon',
     ];
+
+    public function reservations()
+    {
+        return $this->hasMany(reservation::class, 'no_nik', 'no_nik');
+    }
+
     public static function getRowCount(){
         return self::count();
     }

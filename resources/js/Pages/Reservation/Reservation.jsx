@@ -4,6 +4,7 @@ import { Inertia } from "@inertiajs/inertia";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 export default function Reservation({ Room }) {
+    console.log(Room);
     const [showdata, setshow] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -104,31 +105,24 @@ export default function Reservation({ Room }) {
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
-                                            {Room.map((room) => {
-                                                // Memeriksa apakah jenis kamar sudah ada di Set
+                                            {Room[0].map((room) => {
                                                 if (
                                                     !uniqueRoomTypes.has(
-                                                        room.roomtype.jenis
+                                                        room.jenis
                                                     )
                                                 ) {
                                                     // Jika belum ada, tambahkan jenis kamar ke Set dan tampilkan opsi
                                                     uniqueRoomTypes.add(
-                                                        room.roomtype.jenis
+                                                        <room className="jenis"></room>
                                                     );
 
                                                     return (
                                                         <option
-                                                            key={`${room.nomor_kamar}-${room.roomtype.jenis}`}
-                                                            value={
-                                                                room.roomtype
-                                                                    .jenis
-                                                            }
+                                                            key={`${room.nomor_kamar}-${room.jenis}`}
+                                                            value={room.jenis}
                                                             className=""
                                                         >
-                                                            {
-                                                                room.roomtype
-                                                                    .jenis
-                                                            }
+                                                            {room.jenis}
                                                         </option>
                                                     );
                                                 }
@@ -147,11 +141,11 @@ export default function Reservation({ Room }) {
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
-                                            {Room.map((room) => {
-                                                // Cek apakah room.jenis_kamar sama dengan room.roomtype.jenis_kamar
+                                            {Room[1].map((room) => {
                                                 if (
                                                     room.jenis_kamar ===
-                                                    formData.roomType
+                                                        formData.roomType &&
+                                                    room.status != "Booked"
                                                 ) {
                                                     return (
                                                         <option
@@ -255,8 +249,13 @@ export default function Reservation({ Room }) {
                         <p>{showdata ? formData.checkOutDate : null}</p>
                     </div>
                     <div className="flex w-2/3 justify-between">
-                        <h1 className="text-md font-semibold">Total Payment</h1>
-                        {Room.map((room) => {
+                        <h1 className="text-md font-semibold">
+                            Total Payment{" "}
+                        </h1>
+                        {Room[1].map((room) => {
+                            // console.log("------------");
+                            // console.log(room);
+                            // console.log("------------");
                             const startDateObj = new Date(formData.checkInDate);
                             const endDateObj = new Date(formData.checkOutDate);
                             const differenceInMilliseconds =
@@ -268,14 +267,9 @@ export default function Reservation({ Room }) {
                                 formData.harga =
                                     room.roomtype.harga * differenceInDays;
                                 return (
-                                    <p>
-                                        {`Rp${
-                                            showdata
-                                                ? room.roomtype.harga *
-                                                  differenceInDays
-                                                : null
-                                        }`}
-                                    </p>
+                                    <p>{`Rp${
+                                        showdata ? formData.harga : null
+                                    }`}</p>
                                 );
                             }
                             return null;

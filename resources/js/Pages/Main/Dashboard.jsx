@@ -30,7 +30,7 @@ const TodayDate = () => {
 };
 
 export default function DashboarShow({
-    rowCount,
+    DataReservation,
     page,
     rooms,
     username,
@@ -142,7 +142,7 @@ export default function DashboarShow({
                             </div>
                         </div>
                         {page == "Dashboard" ? (
-                            <MainBoard Count={rowCount} />
+                            <MainBoard AllData={DataReservation} />
                         ) : page == "Reservation" ? (
                             <Reservation Room={rooms} />
                         ) : page == "Facility" ? (

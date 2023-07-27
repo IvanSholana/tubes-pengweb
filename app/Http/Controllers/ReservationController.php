@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\customer;
 
+use App\Models\hotelroom;
 use App\Models\reservation;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,15 @@ class ReservationController extends Controller
             'total_harga' => $request->input('harga'),
             'check_in' => $request->input('checkInDate'),
             'check_out' => $request->input('checkOutDate'),
-            'id_kamar' => $request->input('roomNumber'),
+            'nomor_kamar' => $request->input('roomNumber'),
         ];
 
+        $room = HotelRoom::find($request->input('roomNumber'));
+        // Periksa apakah kamar ditemukan sebelum melakukan update statusnya
+        if ($room) {
+            $room->status = "Booked";
+            $room->save();
+        }
         reservation::create($dataReservation);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\hotelroom;
+use App\Models\reservation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,12 +17,14 @@ class roomtype extends Model
     public static function getAllData(){
         return self::all();
     }
+ 
+    protected $fillable = [
+        'jenis','harga','kapasitas','foto'
+    ];
+
     public function hotelRooms()
     {
         return $this->hasMany(hotelroom::class, 'jenis_kamar', 'jenis');
     }
-    protected $fillable = [
-        'jenis','harga','kapasitas','foto'
-    ];
 
 }
