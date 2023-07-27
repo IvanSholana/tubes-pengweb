@@ -3,13 +3,14 @@ import HomeIcon from "@mui/icons-material/Home";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import BedIcon from "@mui/icons-material/Bed";
-import AssessmentIcon from "@mui/icons-material/Assessment";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import DropDownMenu from "../Components/DropDownMenu";
 import MainBoard from "../Dasboard/Dashboard Components/MainBoard";
 import Reservation from "../Reservation/Reservation";
 import FacilityForm from "../Facility/Facilityform";
 import Hotelroom from "../HotelRoom/HotelRoomPage";
+import AccountManagement from "../AccountManagement/AccountManagement";
 
 const TodayDate = () => {
     const [currentDate, setCurrentDate] = useState("");
@@ -35,6 +36,7 @@ export default function DashboarShow({
     username,
     userposition,
     facilityData,
+    account,
 }) {
     console.log(facilityData);
     return (
@@ -101,8 +103,12 @@ export default function DashboarShow({
                             <div>
                                 <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
                                     <span className="flex align-middle  space-x-1">
-                                        <AssessmentIcon />
-                                        <p className="font-semibold">Report</p>
+                                        <AccountCircleIcon />
+                                        <p className="font-semibold">
+                                            <a href="/account">
+                                                Account Management
+                                            </a>
+                                        </p>
                                     </span>
                                 </button>
                             </div>
@@ -143,6 +149,8 @@ export default function DashboarShow({
                             <FacilityForm DataFacility={facilityData} />
                         ) : page == "Hotelroom" ? (
                             <Hotelroom Room={rooms} />
+                        ) : page == "AccountManagement" ? (
+                            <AccountManagement Account={account} />
                         ) : null}
                     </div>
                 </div>

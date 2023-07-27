@@ -9,6 +9,7 @@ use App\Http\Controllers\RoomtypeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HotelroomController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/create', [ReservationController::class,'insertdata']);
     Route::get('/sesi/logout', [LoginController::class, 'logout']);
     Route::post('facility/create',[FacilityController::class,'CreateFacility']);
+    Route::get('/account',[DashboardController::class,'showAccountManagement']);
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -41,5 +43,5 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/sesi/login', [LoginController::class, 'loginprogress'])->name('login.progress');
     Route::get('/',[LoginController::class, 'redirectToLogin']);
     Route::get('/register', [LoginController::class, 'showRegistration']);
-    Route::post('/sesi/register', [LoginController::class, 'createAccount']);
+    Route::post('/sesi/register', [RegistrationController::class, 'createAccount']);
 });

@@ -53,13 +53,5 @@ class LoginController extends Controller
         return inertia('LoginPage/Register');
     }
 
-    public function createAccount(Request $request){
-        $dataRegister = [
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'posisi' => $request->input('posisi'),
-            'password' => bcrypt($request->input('password')) 
-        ];
-        User::create($dataRegister);
-    }
+    
 }

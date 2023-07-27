@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public static function getAllData(){
+        return self::all();
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
