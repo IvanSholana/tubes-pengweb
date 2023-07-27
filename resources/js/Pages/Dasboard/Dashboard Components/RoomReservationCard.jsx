@@ -1,18 +1,18 @@
 import React from "react";
 
 export default function RoomReservationCard(DataReservation) {
-    console.log(DataReservation.Data.hotel_room.room_type.jenis);
+    console.log(DataReservation.Data.hotel_room.nomor_kamar);
     return (
         <>
             {/* CARD RESERVATIOM START */}
-            <div className="flex space-x-3  mb-5">
+            <div className="flex space-x-3 mb-5">
                 {/* ROOM TYPE */}
-                <div id="room-type" className="flex space-x-3 p-1 ">
+                <div id="room-type" className="flex space-x-3 w-40">
                     <div>
+                        {" "}
                         <img
-                            src=
-                            alt=""
-                            className=" w-20 rounded-xl"
+                            className="w-16 h-14 rounded-xl"
+                            src={`/foto/${DataReservation.Data.hotel_room.room_type.foto}`}
                         />
                     </div>
                     <h1 className="text-md font-semibold">
@@ -22,9 +22,9 @@ export default function RoomReservationCard(DataReservation) {
                     </h1>
                 </div>
                 {/* ROOM NUMBER */}
-                <div id="room-number" className="flex ">
+                <div id="room-number" className="flex">
                     <h1 className="text-md font-semibold self-center">
-                        #101 <br />
+                        #{DataReservation.Data.hotel_room.nomor_kamar} <br />
                         <span className="text-sm font-normal">Room Number</span>
                     </h1>
                 </div>
