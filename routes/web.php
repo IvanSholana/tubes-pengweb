@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\RoomtypeController;
@@ -36,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sesi/logout', [LoginController::class, 'logout']);
     Route::post('facility/create',[FacilityController::class,'CreateFacility']);
     Route::get('/account',[DashboardController::class,'showAccountManagement']);
+    Route::post('/account/update/{id}',[EmployeController::class,'UpdateData']);
+    Route::post('/account/delete/{id}',[EmployeController::class,'DeleteActiveData']);
 });
 
 Route::middleware(['guest'])->group(function () {

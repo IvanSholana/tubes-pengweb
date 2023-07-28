@@ -16,7 +16,4 @@ class RegistrationController extends Controller
         ];
         registration::create($dataRegister);
     }
-
-    
-
 }
