@@ -23,6 +23,17 @@ export default function AccountManagement({ Account }) {
         });
     };
 
+    const handleDeleteData = () => {
+        Inertia.post(`/account/delete/${id}`, {
+            onSuccess: () => {
+                Inertia.visit("/account");
+            },
+            onError: (errors) => {
+                console.error(errors);
+            },
+        });
+    };
+
     const handleInputChange = (event) => {
         const { name, value, type } = event.target;
 
@@ -187,18 +198,18 @@ export default function AccountManagement({ Account }) {
                                                     <div className="mt-[25px] flex justify-end">
                                                         <Dialog.Close asChild>
                                                             <div className="space-x-5">
-                                                                <button className="bg-red-500 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
+                                                                <button
+                                                                    onClick={
+                                                                        handleDeleteData
+                                                                    }
+                                                                    className="bg-red-500 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
+                                                                >
                                                                     Delete Data
                                                                 </button>
                                                                 <button
                                                                     className="mt-5 -mb-12 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-800 text-white px-[15px] font-medium leading-none shadow-md focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none"
-                                                                    onClick={(
-                                                                        e
-                                                                    ) =>
-                                                                        handleClick(
-                                                                            e,
-                                                                            account.id
-                                                                        )
+                                                                    onClick={() =>
+                                                                        handleClick
                                                                     }
                                                                 >
                                                                     Update Data
