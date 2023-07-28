@@ -61,7 +61,7 @@ export default function AccountManagement({ Account }) {
 
     return (
         <>
-            <div className="p-5" data-theme="light">
+            <div className="p-5 bg-slate-200" data-theme="light">
                 <div id="Active-Account">
                     <h1 className="text-2xl pb-1">Active Account</h1>
                     <hr className="border-1 w-1/3 border-slate-800" />
@@ -208,7 +208,7 @@ export default function AccountManagement({ Account }) {
                                                                 </button>
                                                                 <button
                                                                     className="mt-5 -mb-12 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-800 text-white px-[15px] font-medium leading-none shadow-md focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none"
-                                                                    onClick={() =>
+                                                                    onClick={
                                                                         handleClick
                                                                     }
                                                                 >
