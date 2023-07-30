@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
-import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import BedIcon from "@mui/icons-material/Bed";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
@@ -11,6 +10,7 @@ import Reservation from "../Reservation/Reservation";
 import FacilityForm from "../Facility/Facilityform";
 import Hotelroom from "../HotelRoom/HotelRoomPage";
 import AccountManagement from "../AccountManagement/AccountManagement";
+import ReservationCRUD from "../Reservation/ReservationCRUD";
 
 const TodayDate = () => {
     const [currentDate, setCurrentDate] = useState("");
@@ -37,8 +37,8 @@ export default function DashboarShow({
     userposition,
     facilityData,
     account,
+    DetailReservation,
 }) {
-    console.log(facilityData);
     return (
         <>
             {/* DASHBOARD LIST */}
@@ -143,6 +143,10 @@ export default function DashboarShow({
                             <Hotelroom Room={rooms} />
                         ) : page == "AccountManagement" ? (
                             <AccountManagement Account={account} />
+                        ) : page == "ReservationDetail" ? (
+                            <ReservationCRUD
+                                DetailReservation={DetailReservation}
+                            />
                         ) : null}
                     </div>
                 </div>

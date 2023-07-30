@@ -37,21 +37,9 @@ class ReservationController extends Controller
         reservation::create($dataReservation);
     }
 
-    public function ShowDetailReservation($id)
-{
+    public function ShowDetailReservation($id){
     
     $reservation = UserPostView::find($id);
-
-    if ($reservation) {
-        echo "Reservation ID: " . $reservation->id . "<br>";
-        echo "NIK: " . $reservation->no_nik . "<br>";
-        echo "Nomor Kamar: " . $reservation->nomor_kamar . "<br>";
-        echo "Jenis Kamar: " . $reservation->jenis . "<br>";
-        echo "Check-in: " . $reservation->check_in . "<br>";
-        echo "Check-out: " . $reservation->check_out . "<br>";
-        echo "Total Harga: " . $reservation->total_harga . "<br><br>";
-    } else {
-        echo "Data not found";
+    return inertia('Main/Dashboard',['page'=>'ReservationDetail','DetailReservation' => $reservation]);
     }
-}
 }
