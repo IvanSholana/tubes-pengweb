@@ -2,18 +2,38 @@ import { React, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Inertia } from "@inertiajs/inertia";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import { Sub } from "@radix-ui/react-dropdown-menu";
+import { Password } from "@mui/icons-material";
 
 export default function AccountManagement({ Account }) {
     const [id, setId] = useState(0);
 
-    const [accountForm, setFormData] = useState({
+    const [accountFormUpdate, setFormDataUpdate] = useState({
         name: "",
         email: "",
         posisi: "Resepsionis",
     });
 
+    const [accountFormSubmit, setFormDataSubmit] = useState({
+        name: "",
+        email: "",
+        password: "",
+        posisi: "Resepsionis",
+    });
+
+    const handleFormSubmitUpdate = () => {
+        Inertia.post(`/account/update/${id}`, accountFormUpdate, {
+            onSuccess: () => {
+                Inertia.visit("/account");
+            },
+            onError: (errors) => {
+                console.error(errors);
+            },
+        });
+    };
+
     const handleFormSubmit = () => {
-        Inertia.post(`/account/update/${id}`, accountForm, {
+        Inertia.post(`/account/addaccount`, accountFormSubmit, {
             onSuccess: () => {
                 Inertia.visit("/account");
             },
@@ -35,24 +55,33 @@ export default function AccountManagement({ Account }) {
     };
 
     const handleInputChange = (event) => {
-        const { name, value, type } = event.target;
-
-        if (type === "file") {
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                [name]: event.target.files[0],
-            }));
-        } else {
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                [name]: value,
-            }));
-        }
+        const { name, value } = event.target;
+        setFormDataUpdate((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
     };
 
-    const handleClick = (event) => {
+    const handleInputChangeSubmit = (SubmitValue) => {
+        const { NameInput, EmailInput, PasswordInput, PosisiInput } =
+            SubmitValue;
+        setFormDataSubmit((prevFormData) => ({
+            ...prevFormData,
+            name: NameInput,
+            email: EmailInput,
+            password: PasswordInput,
+            posisi: PosisiInput,
+        }));
+    };
+
+    const handleClickSubmit = (event) => {
         event.preventDefault();
         handleFormSubmit();
+    };
+
+    const handleClickUpdate = (event) => {
+        event.preventDefault();
+        handleFormSubmitUpdate();
     };
 
     const updateId = (AccountId) => {
@@ -125,7 +154,9 @@ export default function AccountManagement({ Account }) {
                                                 </Dialog.Description>
                                                 <form
                                                     method="POST"
-                                                    onSubmit={handleFormSubmit}
+                                                    onSubmit={
+                                                        handleFormSubmitUpdate
+                                                    }
                                                 >
                                                     <fieldset className="mb-[15px] flex items-center gap-5">
                                                         <label
@@ -138,7 +169,7 @@ export default function AccountManagement({ Account }) {
                                                             className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                                                             name="name"
                                                             value={
-                                                                accountForm.name
+                                                                accountFormUpdate.name
                                                             }
                                                             onChange={
                                                                 handleInputChange
@@ -159,7 +190,7 @@ export default function AccountManagement({ Account }) {
                                                             className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                                                             name="email"
                                                             value={
-                                                                accountForm.email
+                                                                accountFormUpdate.email
                                                             }
                                                             onChange={
                                                                 handleInputChange
@@ -181,7 +212,7 @@ export default function AccountManagement({ Account }) {
                                                             name="posisi"
                                                             id=""
                                                             value={
-                                                                accountForm.posisi
+                                                                accountFormUpdate.posisi
                                                             }
                                                             onChange={
                                                                 handleInputChange
@@ -209,7 +240,7 @@ export default function AccountManagement({ Account }) {
                                                                 <button
                                                                     className="mt-5 -mb-12 hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-800 text-white px-[15px] font-medium leading-none shadow-md focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none"
                                                                     onClick={
-                                                                        handleClick
+                                                                        handleClickUpdate
                                                                     }
                                                                 >
                                                                     Update Data
@@ -237,7 +268,7 @@ export default function AccountManagement({ Account }) {
                 <div id="Waited">
                     <h1 className="text-2xl pb-1">Waiting for Confirmation</h1>
                     <hr className="border-1 w-1/3 border-slate-800" />
-                    <form action="">
+                    <form action="" onSubmit={handleFormSubmit}>
                         <div className="flex space-x-5">
                             {Account[1].map((account) => (
                                 <div
@@ -250,6 +281,7 @@ export default function AccountManagement({ Account }) {
                                             type="text"
                                             className="bg-slate-100 py-1 px-1"
                                             disabled
+                                            name="name"
                                             value={account.name}
                                             key={account.name}
                                         />
@@ -258,6 +290,7 @@ export default function AccountManagement({ Account }) {
                                             type="text"
                                             className="bg-slate-100 py-1 px-1"
                                             disabled
+                                            name="email"
                                             value={account.email}
                                             key={account.email}
                                         />
@@ -273,7 +306,22 @@ export default function AccountManagement({ Account }) {
                                     <div className="mt-5">
                                         <AlertDialog.Root>
                                             <AlertDialog.Trigger asChild>
-                                                <button className="text-white hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-600 px-[15px] font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black">
+                                                <button
+                                                    onClick={handleInputChangeSubmit.bind(
+                                                        null,
+                                                        {
+                                                            NameInput:
+                                                                account.name,
+                                                            EmailInput:
+                                                                account.email,
+                                                            PasswordInput:
+                                                                account.password,
+                                                            PosisiInput:
+                                                                account.posisi,
+                                                        }
+                                                    )}
+                                                    className="text-white hover:bg-mauve3 inline-flex h-[35px] items-center justify-center rounded-[4px] bg-slate-600 px-[15px] font-medium leading-none shadow-[0_2px_10px] outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+                                                >
                                                     Confirm Account
                                                 </button>
                                             </AlertDialog.Trigger>
@@ -300,6 +348,9 @@ export default function AccountManagement({ Account }) {
                                                             asChild
                                                         >
                                                             <button
+                                                                onClick={
+                                                                    handleClickSubmit
+                                                                }
                                                                 type="submit"
                                                                 className="z-50 bg-green-500 text-white bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
                                                             >

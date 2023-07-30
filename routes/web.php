@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account',[DashboardController::class,'showAccountManagement']);
     Route::post('/account/update/{id}',[EmployeController::class,'UpdateData']);
     Route::post('/account/delete/{id}',[EmployeController::class,'DeleteActiveData']);
+    Route::post('/account/addaccount',[RegistrationController::class,'addAcounttoActiveAccount']);
 });
 
 Route::middleware(['guest'])->group(function () {
