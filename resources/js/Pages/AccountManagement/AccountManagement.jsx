@@ -90,7 +90,7 @@ export default function AccountManagement({ Account }) {
 
     return (
         <>
-            <div className="p-5 bg-slate-200" data-theme="light">
+            <div className="p-5 bg-slate-200 mb-20" data-theme="light">
                 <div id="Active-Account">
                     <h1 className="text-2xl pb-1">Active Account</h1>
                     <hr className="border-1 w-1/3 border-slate-800" />

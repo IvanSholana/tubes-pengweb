@@ -71,7 +71,7 @@ export default function DashboarShow({
                                         </p>
                                     </span>
                                 </button>
-                            </div>  
+                            </div>
                             <div>
                                 <button className="px-3 py-2 rounded-xl w-full hover:bg-slate-200">
                                     <span className="flex align-middle  space-x-1">

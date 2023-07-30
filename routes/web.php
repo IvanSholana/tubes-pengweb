@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/account/update/{id}',[EmployeController::class,'UpdateData']);
     Route::post('/account/delete/{id}',[EmployeController::class,'DeleteActiveData']);
     Route::post('/account/addaccount',[RegistrationController::class,'addAcounttoActiveAccount']);
+    Route::post('/facility/update/{id}',[FacilityController::class,'updateFacility']);
+    Route::post('/facility/delete/{id}',[FacilityController::class,'deleteFacility']);
 });
 
 Route::middleware(['guest'])->group(function () {
