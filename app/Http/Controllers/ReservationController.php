@@ -7,6 +7,7 @@ use App\Models\customer;
 
 use App\Models\hotelroom;
 use App\Models\reservation;
+use App\Models\UserPostView;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -35,4 +36,22 @@ class ReservationController extends Controller
         }
         reservation::create($dataReservation);
     }
+
+    public function ShowDetailReservation($id)
+{
+    
+    $reservation = UserPostView::find($id);
+
+    if ($reservation) {
+        echo "Reservation ID: " . $reservation->id . "<br>";
+        echo "NIK: " . $reservation->no_nik . "<br>";
+        echo "Nomor Kamar: " . $reservation->nomor_kamar . "<br>";
+        echo "Jenis Kamar: " . $reservation->jenis . "<br>";
+        echo "Check-in: " . $reservation->check_in . "<br>";
+        echo "Check-out: " . $reservation->check_out . "<br>";
+        echo "Total Harga: " . $reservation->total_harga . "<br><br>";
+    } else {
+        echo "Data not found";
+    }
+}
 }

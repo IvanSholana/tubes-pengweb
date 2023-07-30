@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/account/addaccount',[RegistrationController::class,'addAcounttoActiveAccount']);
     Route::post('/facility/update/{id}',[FacilityController::class,'updateFacility']);
     Route::post('/facility/delete/{id}',[FacilityController::class,'deleteFacility']);
+    Route::get('/reservation/detail/{id}', [ReservationController::class, 'ShowDetailReservation']);
 });
 
 Route::middleware(['guest'])->group(function () {
