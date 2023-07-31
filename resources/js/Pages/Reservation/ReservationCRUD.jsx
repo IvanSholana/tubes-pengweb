@@ -125,6 +125,7 @@ export default function ReservationCRUD(ReservationData) {
                                     defaultValue={
                                         ReservationData.DetailReservation.jenis
                                     }
+                                    readOnly
                                     onChange={handleInputChange}
                                     className="bg-slate-100 p-1 border rounded-sm"
                                 />

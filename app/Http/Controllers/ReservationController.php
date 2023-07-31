@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\customer;
+use DateTime;
 
+use App\Models\customer;
 use App\Models\hotelroom;
 use App\Models\reservation;
 use App\Models\UserPostView;
@@ -45,13 +46,30 @@ class ReservationController extends Controller
 
     public function ReservationUpdate(Request $request, $id){
         $reservation = UserPostView::find($id);
-        // if($request->has('no_nik')){
-        //     $customer = customer::where('no_nik',$reservation->no_nik);
-        // }
-        // if($request->has('nomor_kamar')){
-        //     $hotelroom = hotelroom::where('nomor_kamar',$reservation->nomor_kamar);
-        // }
-        dd($request->all());
+        $customer = customer::where('no_nik',$reservation->no_nik)->first();;
         
+        // Customer
+        if($customer){
+            $customer->no_nik = $request->input('no_nik');
+            $customer->nama_pelanggan = $request->input('name');
+            $customer->save();
+        }
+        
+        // Reservation
+        $reservation->nama_pelanggan = $request->input('name');
+        $reservation->no_nik = $request->input('no_nik');
+        
+        // NOMOR KAMAR
+        $reservation->nomor_kamar = $request->input('nomor_kamar');
+        // CHECK IN & CHECK OUT
+        $reservation->check_in = $request->input('check_in');
+        $reservation->check_out = $request->input('check_out');
+        // TOTAL HARGA
+        $checkInDateTime = new DateTime($request->input('check_in'));
+        $checkOutDateTime = new DateTime($request->input('check_out'));
+        $selisihHari = $checkInDateTime->diff($checkOutDateTime)->days;
+        $reservation->total_harga = $reservation->harga * $selisihHari;
+
+        $reservation->save();
     }
 }
