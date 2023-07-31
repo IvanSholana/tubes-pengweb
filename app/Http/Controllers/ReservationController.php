@@ -42,4 +42,16 @@ class ReservationController extends Controller
     $reservation = UserPostView::find($id);
     return inertia('Main/Dashboard',['page'=>'ReservationDetail','DetailReservation' => $reservation]);
     }
+
+    public function ReservationUpdate(Request $request, $id){
+        $reservation = UserPostView::find($id);
+        // if($request->has('no_nik')){
+        //     $customer = customer::where('no_nik',$reservation->no_nik);
+        // }
+        // if($request->has('nomor_kamar')){
+        //     $hotelroom = hotelroom::where('nomor_kamar',$reservation->nomor_kamar);
+        // }
+        dd($request->all());
+        
+    }
 }

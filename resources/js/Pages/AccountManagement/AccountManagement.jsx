@@ -2,8 +2,6 @@ import { React, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Inertia } from "@inertiajs/inertia";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { Sub } from "@radix-ui/react-dropdown-menu";
-import { Password } from "@mui/icons-material";
 
 export default function AccountManagement({ Account }) {
     const [id, setId] = useState(0);
