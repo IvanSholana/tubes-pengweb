@@ -255,10 +255,7 @@ export default function Reservation({ Room }) {
                             Total Payment{" "}
                         </h1>
                         {Room[1].map((room) => {
-                            // console.log("------------");
-                            // console.log(room);
-                            // console.log("------------");
-                            const startDateObj = new Date(formData.checkInDate);
+                                const startDateObj = new Date(formData.checkInDate);
                             const endDateObj = new Date(formData.checkOutDate);
                             const differenceInMilliseconds =
                                 endDateObj - startDateObj;

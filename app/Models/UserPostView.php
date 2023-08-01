@@ -9,4 +9,6 @@ class UserPostView extends Model
 {
     use HasFactory;
     protected $table = 'reservation_view';
+    public $timestamps = false;
+
 }

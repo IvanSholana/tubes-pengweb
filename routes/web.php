@@ -25,7 +25,7 @@ use App\Http\Controllers\RegistrationController;
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard  ', [DashboardController::class, 'showdashboard']);
+    Route::get('/dashboard', [DashboardController::class, 'showdashboard']);
     Route::get('/dashboard/resepsionis  ', [DashboardController::class, 'showdashboard'])->middleware('userAkses:resepsionis');
     Route::get('/dashboard/operator  ', [DashboardController::class, 'showdashboard'])->middleware('userAkses:operator');
     Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/facility/delete/{id}',[FacilityController::class,'deleteFacility']);
     Route::get('/reservation/detail/{id}', [ReservationController::class, 'ShowDetailReservation']);
     Route::post('/reservation/update/{id}',[ReservationController::class,'ReservationUpdate']);
+    Route::post('/reservation/delete/{id}',[ReservationController::class,'DeleteActiveReservation']);
 });
 
 Route::middleware(['guest'])->group(function () {

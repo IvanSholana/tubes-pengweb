@@ -72,4 +72,11 @@ class ReservationController extends Controller
 
         $reservation->save();
     }
+
+    public function DeleteActiveReservation($id){
+        $account = reservation::where('id_reservasi',$id)->first();
+        if ($account) {
+            $account->delete();
+        }
+    }
 }

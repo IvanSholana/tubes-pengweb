@@ -55,6 +55,25 @@ export default function ReservationCRUD(ReservationData) {
     };
 
     // DELETE
+    const Delete = () => {
+        Inertia.post(
+            `/reservation/delete/${ReservationData.DetailReservation.id}`,
+            UpdateData,
+            {
+                onSuccess: () => {
+                    Inertia.visit(`/reservation`);
+                },
+                onError: (errors) => {
+                    console.error(errors);
+                },
+            }
+        );
+    };
+
+    const handleClickDelete = (event) => {
+        event.preventDefault();
+        Delete();
+    };
 
     return (
         <>
@@ -123,7 +142,8 @@ export default function ReservationCRUD(ReservationData) {
                                     type="text"
                                     name="jenis_kamar"
                                     defaultValue={
-                                        ReservationData.DetailReservation.jenis
+                                        ReservationData.DetailReservation
+                                            .jenis_kamar
                                     }
                                     readOnly
                                     onChange={handleInputChange}
@@ -153,7 +173,7 @@ export default function ReservationCRUD(ReservationData) {
                                             ReservationData.DetailReservation
                                                 .check_out
                                         }
-                                        className="bg-slate-100 p-1onChange={handleInputChange} border rounded-sm"
+                                        className="bg-slate-100 p-1 border rounded-sm"
                                     />
                                 </div>
                             </div>
@@ -176,7 +196,10 @@ export default function ReservationCRUD(ReservationData) {
                                 >
                                     Update Data
                                 </button>
-                                <button className="bg-red-500 text-white px-5 py-2 rounded-md">
+                                <button
+                                    className="bg-red-500 text-white px-5 py-2 rounded-md"
+                                    onClick={handleClickDelete}
+                                >
                                     Delete Data
                                 </button>
                             </div>
@@ -191,7 +214,7 @@ export default function ReservationCRUD(ReservationData) {
                             alt="jenis kamar"
                         />
                         <h1 className="text-end text-2xl font-semibold">
-                            {ReservationData.DetailReservation.jenis} Room
+                            {ReservationData.DetailReservation.jenis_kamar}
                         </h1>
                     </div>
                 </div>

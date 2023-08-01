@@ -44,7 +44,7 @@ export default function RoomReservationCard(DataReservation) {
                                 </span>
                             </h1>
                         </div>
-                        <div id="check-in" className="flex p-1">
+                        <div id="check-in" className="flex p-1 ">
                             <h1 className="text-md font-semibold self-center">
                                 {DataReservation.Data.check_in} <br />
                                 <span className="font-normal">Check In</span>
