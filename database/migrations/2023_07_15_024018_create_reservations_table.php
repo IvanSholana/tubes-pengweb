@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->bigIncrements('id_reservasi');
             $table->integer('no_nik');
-            $table->integer('nomor_kamar')->unsigned();
+            $table->integer('nomor_kamar')->unsigned()->unique();
             $table->integer('total_harga');   
             $table->date('check_in');
             $table->date('check_out');
