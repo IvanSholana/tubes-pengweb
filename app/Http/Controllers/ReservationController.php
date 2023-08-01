@@ -28,9 +28,9 @@ class ReservationController extends Controller
             'check_out' => $request->input('checkOutDate'),
             'nomor_kamar' => $request->input('roomNumber'),
         ];
+        
+        $room = HotelRoom::where('nomor_kamar', $request->input('roomNumber'))->first();
 
-        $room = HotelRoom::find($request->input('roomNumber'));
-        // Periksa apakah kamar ditemukan sebelum melakukan update statusnya
         if ($room) {
             $room->status = "Booked";
             $room->save();

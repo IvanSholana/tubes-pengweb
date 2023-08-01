@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function RoomReservationCard(DataReservation) {
-    let id = DataReservation.Data.id;
+    let id = DataReservation.Data.id_reservasi;
+    console.log(id);
 
     return (
         <>
