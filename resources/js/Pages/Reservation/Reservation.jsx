@@ -4,14 +4,13 @@ import { Inertia } from "@inertiajs/inertia";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 export default function Reservation({ Room }) {
-    console.log(Room);
     const [showdata, setshow] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
         nik: "",
         no_hp: "",
-        roomType: "Deluxe",
+        roomType: "Single Room",
         roomNumber: "",
         checkInDate: "",
         checkOutDate: "",
@@ -108,25 +107,24 @@ export default function Reservation({ Room }) {
                                             {Room[0].map((room) => {
                                                 if (
                                                     !uniqueRoomTypes.has(
-                                                        room.jenis
+                                                        room.jenis_kamar
                                                     )
                                                 ) {
-                                                    // Jika belum ada, tambahkan jenis kamar ke Set dan tampilkan opsi
                                                     uniqueRoomTypes.add(
                                                         <room className="jenis"></room>
                                                     );
 
                                                     return (
                                                         <option
-                                                            key={`${room.nomor_kamar}-${room.jenis}`}
-                                                            value={room.jenis}
-                                                            className=""
+                                                            key={`${room.nomor_kamar}-${room.jenis_kamar}`}
+                                                            value={
+                                                                room.jenis_kamar
+                                                            }
                                                         >
-                                                            {room.jenis}
+                                                            {room.jenis_kamar}
                                                         </option>
                                                     );
                                                 }
-                                                // Jika jenis kamar sudah ada di Set, skip dan tidak tampilkan opsi
                                                 return null;
                                             })}
                                         </select>
@@ -137,7 +135,11 @@ export default function Reservation({ Room }) {
                                     <label htmlFor="">
                                         <select
                                             name="roomNumber"
-                                            value={formData.roomNumber}
+                                            value={
+                                                formData.roomNumber == ""
+                                                    ? Room[0].nomor_kamar
+                                                    : formData.roomNumber
+                                            }
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >

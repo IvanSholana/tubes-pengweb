@@ -13,7 +13,7 @@ export default function RoomPage({ Room }) {
 
     const [formRoom, setRoomData] = useState({
         nomor_kamar: 0,
-        jenis_kamar: "",
+        jenis_kamar: "Single Room",
         status: "Available",
     });
 
@@ -123,10 +123,10 @@ export default function RoomPage({ Room }) {
                                         >
                                             {Room[0].map((room) => (
                                                 <option
-                                                    key={room.jenis}
-                                                    value={room.jenis}
+                                                    key={room.jenis_kamar}
+                                                    value={room.jenis_kamar}
                                                 >
-                                                    {room.jenis}
+                                                    {room.jenis_kamar}
                                                 </option>
                                             ))}
                                         </select>

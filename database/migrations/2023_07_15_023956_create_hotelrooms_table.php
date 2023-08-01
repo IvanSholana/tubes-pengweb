@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hotelrooms', function (Blueprint $table) {
-            $table->integer('nomor_kamar')->unsigned();
-            $table->primary('nomor_kamar');
+            $table->bigIncrements('nomor_kamar_id')->unsigned();
+            $table->integer('nomor_kamar')->unsigned()->unique();
         });
     }
 

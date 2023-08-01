@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class roomtype extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'jenis';
+    protected $primaryKey = 'jenis_kamar_id';
     protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;
@@ -19,12 +19,12 @@ class roomtype extends Model
     }
  
     protected $fillable = [
-        'jenis','harga','kapasitas','foto'
+        'jenis_kamar','harga','kapasitas','foto'
     ];
 
     public function hotelRooms()
     {
-        return $this->hasMany(hotelroom::class, 'jenis_kamar', 'jenis');
+        return $this->hasMany(hotelroom::class, 'jenis_kamar', 'jenis_kamar');
     }
 
 }

@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('roomtypes', function (Blueprint $table) {
-            $table->string('jenis')->nullable(false);
+            $table->bigIncrements('jenis_kamar_id')->nullable(false);
+            $table->string('jenis_kamar')->nullable(false)->unique();
             $table->integer('harga')->nullable(false);
-            $table->integer('kapasitas')->nullable(false);
-            $table->primary('jenis');
+            $table->integer('kapasitas')->nullable(false);;
         });
     }
 

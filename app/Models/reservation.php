@@ -12,6 +12,7 @@ class reservation extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = 'id_reservasi';
     protected $fillable = [
         'no_nik',
         'total_harga',

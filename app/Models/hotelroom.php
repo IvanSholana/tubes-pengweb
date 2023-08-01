@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class hotelroom extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'nomor_kamar';
+    protected $primaryKey = 'nomor_kamar_id';
     public $timestamps = false;
     public static function getAllData(){
         return self::all();
@@ -28,7 +28,7 @@ class hotelroom extends Model
 
     public function roomType()
     {
-        return $this->belongsTo(roomtype::class, 'jenis_kamar', 'jenis');
+        return $this->belongsTo(roomtype::class, 'jenis_kamar', 'jenis_kamar');
     }
     public static function CountAllRoom(){
         return self::count();

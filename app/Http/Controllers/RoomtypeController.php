@@ -21,7 +21,7 @@ class RoomtypeController extends Controller
         $foto_file->move(public_path('foto'), $foto_name);
 
         $dataInput = [
-            'jenis' => $request->input('jenis'),
+            'jenis_kamar' => $request->input('jenis'),
             'harga' => $request->input('harga'),
             'kapasitas' => $request->input('kapasitas'),
             'foto' => $foto_name

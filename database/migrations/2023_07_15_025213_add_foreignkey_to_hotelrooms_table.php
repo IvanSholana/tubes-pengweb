@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('hotelrooms', function (Blueprint $table) {
             $table->string('jenis_kamar')->nullable(false);
-            $table->foreign('jenis_kamar')->references('jenis')->on('roomtypes')->onDelete('cascade');
+            $table->foreign('jenis_kamar')->references('jenis_kamar')->on('roomtypes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

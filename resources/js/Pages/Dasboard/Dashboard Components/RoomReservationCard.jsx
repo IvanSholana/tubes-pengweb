@@ -10,28 +10,32 @@ export default function RoomReservationCard(DataReservation) {
                     {/* CARD RESERVATIOM START */}
                     <div className="flex space-x-3 mb-5">
                         {/* ROOM TYPE */}
-                        <div id="room-type" className="flex space-x-3 w-40">
-                            <div>
-                                {" "}
+                        <div
+                            id="room-type"
+                            className="flex w-1/2 space-x-3 w-40  "
+                        >
+                            <div className="w-1/2  flex">
                                 <img
-                                    className="w-16 h-14 rounded-xl"
+                                    className="rounded-xl h-fit self-center"
                                     src={`/foto/${DataReservation.Data.hotel_room.room_type.foto}`}
                                 />
                             </div>
-                            <h1 className="text-md font-semibold">
-                                {
-                                    DataReservation.Data.hotel_room.room_type
-                                        .jenis
-                                }
-                                <br />
-                                <span className="text-sm font-normal">
-                                    Room Type
-                                </span>
-                            </h1>
+                            <div className="w-1/2">
+                                <h1 className="text-md font-semibold text-start">
+                                    {
+                                        DataReservation.Data.hotel_room
+                                            .room_type.jenis_kamar
+                                    }
+                                    <br />
+                                    <span className="text-sm font-normal">
+                                        Room Type
+                                    </span>
+                                </h1>
+                            </div>
                         </div>
                         {/* ROOM NUMBER */}
                         <div id="room-number" className="flex">
-                            <h1 className="text-md font-semibold self-center">
+                            <h1 className="text-md font-semibold self-center text-start">
                                 #{DataReservation.Data.hotel_room.nomor_kamar}{" "}
                                 <br />
                                 <span className="text-sm font-normal">

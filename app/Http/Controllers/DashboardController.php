@@ -18,7 +18,7 @@ class DashboardController extends Controller
         public function showDashboard()
         {
             $AllData = reservation::with(['customer', 'hotelRoom.roomType'])
-            ->select('id', 'no_nik', 'total_harga', 'check_in', 'check_out', 'nomor_kamar')
+            ->select('id_reservasi', 'no_nik', 'total_harga', 'check_in', 'check_out', 'nomor_kamar')
             ->get();
             $CountData = reservation::CountData();
             $FreeRoom = hotelroom::CountAllRoom();
