@@ -58,7 +58,6 @@ export default function ReservationCRUD(ReservationData) {
     const Delete = () => {
         Inertia.post(
             `/reservation/delete/${ReservationData.DetailReservation.id}`,
-            UpdateData,
             {
                 onSuccess: () => {
                     Inertia.visit(`/reservation`);

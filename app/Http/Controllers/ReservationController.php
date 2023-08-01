@@ -10,6 +10,7 @@ use App\Models\hotelroom;
 use App\Models\reservation;
 use App\Models\UserPostView;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ReservationController extends Controller
 {
@@ -78,5 +79,6 @@ class ReservationController extends Controller
         if ($account) {
             $account->delete();
         }
+        return Redirect::to('/dashboard');
     }
 }
