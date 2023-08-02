@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use DateTime;
 
 use App\Models\customer;
+use App\Models\roomtype;
 use App\Models\hotelroom;
 use App\Models\reservation;
 use App\Models\UserPostView;
@@ -62,15 +63,23 @@ class ReservationController extends Controller
         
         // NOMOR KAMAR
         $reservation->nomor_kamar = $request->input('nomor_kamar');
+
         // CHECK IN & CHECK OUT
         $reservation->check_in = $request->input('check_in');
         $reservation->check_out = $request->input('check_out');
+
+        // Harga Kamar
+        $hotelroom = hotelroom::where('nomor_kamar',$reservation->nomor_kamar)->first();
+        $roomtype = roomtype::where('jenis_kamar',$hotelroom->jenis_kamar)->first();
+        
+        $harga_kamar = $roomtype->harga;
+        
         // TOTAL HARGA
         $checkInDateTime = new DateTime($request->input('check_in'));
         $checkOutDateTime = new DateTime($request->input('check_out'));
         $selisihHari = $checkInDateTime->diff($checkOutDateTime)->days;
-        $reservation->total_harga = $reservation->harga * $selisihHari;
-
+        $reservation->total_harga = $harga_kamar * $selisihHari;
+      
         $reservation->save();
     }
 

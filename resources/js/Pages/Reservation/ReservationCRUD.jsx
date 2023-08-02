@@ -131,6 +131,7 @@ export default function ReservationCRUD(ReservationData) {
                                         ReservationData.DetailReservation
                                             .nomor_kamar
                                     }
+                                    readOnly
                                     onChange={handleInputChange}
                                     className="bg-slate-100 p-1 border rounded-sm"
                                 />
@@ -172,6 +173,7 @@ export default function ReservationCRUD(ReservationData) {
                                             ReservationData.DetailReservation
                                                 .check_out
                                         }
+                                        onChange={handleInputChange}
                                         className="bg-slate-100 p-1 border rounded-sm"
                                     />
                                 </div>
