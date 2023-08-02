@@ -30,12 +30,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/operator  ', [DashboardController::class, 'showdashboard'])->middleware('userAkses:operator');
     Route::get('/reservation  ', [DashboardController::class, 'showreservation']);
     Route::get('/facility', [DashboardController::class,'showfacility']);
-    Route::get('/hotelroom', [DashboardController::class,'showhotelroom']);
+    Route::get('/hotelroom', [DashboardController::class,'showhotelroom'])->name('hotelroom');;
     Route::post('/hotelroom/create', [RoomtypeController::class,'createRoom']);
     Route::post('/hotelroom/createroom', [HotelroomController::class,'createRoom']);
     Route::post('/create', [ReservationController::class,'insertdata']);
     Route::get('/sesi/logout', [LoginController::class, 'logout']);
-    Route::post('facility/create',[FacilityController::class,'CreateFacility']);
+    Route::post('/facility/create',[FacilityController::class,'CreateFacility']);
     Route::get('/account',[DashboardController::class,'showAccountManagement']);
     Route::post('/account/update/{id}',[EmployeController::class,'UpdateData']);
     Route::post('/account/delete/{id}',[EmployeController::class,'DeleteActiveData']);
@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reservation/update/{id}',[ReservationController::class,'ReservationUpdate']);
     Route::post('/reservation/delete/{id}',[ReservationController::class,'DeleteActiveReservation']);
     Route::post('/hotelroom/update/{id}',[HotelroomController::class,'updateRoom']);
+    Route::post('/hotelroom/delete/{id}',[HotelroomController::class,'deleteRoom']);
 });
 
 Route::middleware(['guest'])->group(function () {

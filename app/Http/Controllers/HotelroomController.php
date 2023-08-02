@@ -38,4 +38,13 @@ class HotelroomController extends Controller
 
         $hotelroom->save();
     }
+
+    public function deleteRoom($id){
+        $hotelroom = hotelroom::find($id);
+        if($hotelroom && $hotelroom->status != "Booked"){
+            $hotelroom->delete();
+        }else{
+            return redirect()->route('hotelroom')->with('error', 'Maaf, kamar tidak dapat dihapus.');
+        }
+    }
 }

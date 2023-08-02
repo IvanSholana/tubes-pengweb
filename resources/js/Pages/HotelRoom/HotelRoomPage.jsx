@@ -105,6 +105,25 @@ export default function RoomPage({ Room }) {
         handleFormUpdateRoom();
     };
 
+    // DeleteRoom
+
+    const handleFormDeleteRoom = () => {
+        Inertia.post(`/hotelroom/delete/${id}`, {
+            onSuccess: () => {
+                // Redirect ke halaman lain jika diperlukan
+                Inertia.visit("/hotelroom");
+            },
+            onError: (errors) => {
+                console.error(errors);
+            },
+        });
+    };
+
+    const handleClickDelete = (event) => {
+        event.preventDefault();
+        handleFormDeleteRoom();
+    };
+
     return (
         <>
             <div className="w-full p-5 mx-auto">
@@ -359,14 +378,27 @@ export default function RoomPage({ Room }) {
                                                             <Dialog.Close
                                                                 asChild
                                                             >
-                                                                <button
-                                                                    onClick={
-                                                                        handleClickUpdate
-                                                                    }
-                                                                    className=" bg-slate-900 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
-                                                                >
-                                                                    Save Data
-                                                                </button>
+                                                                <div className="space-x-5">
+                                                                    {" "}
+                                                                    <button
+                                                                        onClick={
+                                                                            handleClickDelete
+                                                                        }
+                                                                        className=" bg-red-500 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
+                                                                    >
+                                                                        Delete
+                                                                        Data
+                                                                    </button>
+                                                                    <button
+                                                                        onClick={
+                                                                            handleClickUpdate
+                                                                        }
+                                                                        className=" bg-slate-900 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
+                                                                    >
+                                                                        Save
+                                                                        Data
+                                                                    </button>
+                                                                </div>
                                                             </Dialog.Close>
                                                         </div>
                                                     </form>
