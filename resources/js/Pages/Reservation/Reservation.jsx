@@ -10,8 +10,12 @@ export default function Reservation({ Room }) {
         name: "",
         nik: "",
         no_hp: "",
-        roomType: "Single Room",
-        roomNumber: "",
+        roomType: Room[0][0].jenis_kamar,
+        roomNumber: Room[1].find(
+            (room) =>
+                room.status === "Available" &&
+                room.jenis_kamar === Room[0][0].jenis_kamar
+        ).nomor_kamar,
         checkInDate: "",
         checkOutDate: "",
         harga: "",
@@ -103,6 +107,9 @@ export default function Reservation({ Room }) {
                                             value={formData.roomType}
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
+                                            defaultValue={
+                                                Room[0][0].jenis_kamar
+                                            }
                                         >
                                             {Room[0].map((room) => {
                                                 if (
@@ -135,11 +142,7 @@ export default function Reservation({ Room }) {
                                     <label htmlFor="">
                                         <select
                                             name="roomNumber"
-                                            value={
-                                                formData.roomNumber == ""
-                                                    ? Room[0].nomor_kamar
-                                                    : formData.roomNumber
-                                            }
+                                            value={formData.roomNumber}
                                             onChange={handleInputChange}
                                             className="w-full bg-slate-200 p-2 rounded-md"
                                         >
@@ -154,7 +157,9 @@ export default function Reservation({ Room }) {
                                                             key={
                                                                 room.nomor_kamar
                                                             }
-                                                            value={`${room.nomor_kamar}`}
+                                                            value={
+                                                                room.nomor_kamar
+                                                            }
                                                             className=""
                                                         >
                                                             {`${room.nomor_kamar} - ${room.jenis_kamar}`}
@@ -255,7 +260,7 @@ export default function Reservation({ Room }) {
                             Total Payment{" "}
                         </h1>
                         {Room[1].map((room) => {
-                                const startDateObj = new Date(formData.checkInDate);
+                            const startDateObj = new Date(formData.checkInDate);
                             const endDateObj = new Date(formData.checkOutDate);
                             const differenceInMilliseconds =
                                 endDateObj - startDateObj;

@@ -2,8 +2,6 @@ import React from "react";
 
 export default function RoomReservationCard(DataReservation) {
     let id = DataReservation.Data.id_reservasi;
-    console.log(id);
-
     return (
         <>
             <button>
@@ -11,10 +9,7 @@ export default function RoomReservationCard(DataReservation) {
                     {/* CARD RESERVATIOM START */}
                     <div className="flex space-x-3 mb-5">
                         {/* ROOM TYPE */}
-                        <div
-                            id="room-type"
-                            className="flex w-1/2 space-x-3 w-40  "
-                        >
+                        <div id="room-type" className="flex w-1/2 space-x-3">
                             <div className="w-1/2  flex">
                                 <img
                                     className="rounded-xl h-fit self-center"
