@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reservation/detail/{id}', [ReservationController::class, 'ShowDetailReservation']);
     Route::post('/reservation/update/{id}',[ReservationController::class,'ReservationUpdate']);
     Route::post('/reservation/delete/{id}',[ReservationController::class,'DeleteActiveReservation']);
+    Route::post('/hotelroom/update/{id}',[HotelroomController::class,'updateRoom']);
 });
 
 Route::middleware(['guest'])->group(function () {

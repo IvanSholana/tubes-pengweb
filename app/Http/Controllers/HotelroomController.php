@@ -22,4 +22,20 @@ class HotelroomController extends Controller
 
         hotelroom::create($dataInput);
     }
+
+    public function updateRoom(Request $request, $id){
+        $hotelroom = hotelroom::find($id);
+        if($request->nomor_kamar == 0){
+            $hotelroom->nomor_kamar = $hotelroom->nomor_kamar;
+        }else{
+            $hotelroom->nomor_kamar = $request->nomor_kamar;
+        }
+        if($request->jenis_kamar == ""){
+            $hotelroom->jenis_kamar = $hotelroom->jenis_kamar;
+        }else{
+            $hotelroom->jenis_kamar = $request->jenis_kamar;
+        }
+
+        $hotelroom->save();
+    }
 }
