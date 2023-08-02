@@ -77,8 +77,13 @@ class ReservationController extends Controller
     public function DeleteActiveReservation($id){
         $account = reservation::where('id_reservasi',$id)->first();
         if ($account) {
-            $account->delete();
+            $room = HotelRoom::where('nomor_kamar',$account->nomor_kamar)->first();
+            if ($room) {
+                $room->status = "Available";
+                $room->save();
+                $account->delete();
         }
+    }
         return Redirect::to('/dashboard');
     }
 }
