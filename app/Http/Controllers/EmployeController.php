@@ -11,9 +11,9 @@ class EmployeController extends Controller
     {
         $account = User::find($id);
         if ($account) {
-            $account->name = $request->input('name');
-            $account->email = $request->input('email');
-            $account->posisi = $request->input('posisi');
+            $account->name = $request->name ?? $account->name;
+            $account->email = $request->email ?? $account->email;
+            $account->posisi = $request->posisi ?? $account->posisi;
             $account->save(); 
         }
     }

@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/reservation/delete/{id}',[ReservationController::class,'DeleteActiveReservation']);
     Route::post('/hotelroom/update/{id}',[HotelroomController::class,'updateRoom']);
     Route::post('/hotelroom/delete/{id}',[HotelroomController::class,'deleteRoom']);
+    Route::post('/hotelroom/updatetype',[RoomtypeController::class,'updateRoomType']);
 });
 
 Route::middleware(['guest'])->group(function () {

@@ -9,14 +9,14 @@ export default function AccountManagement({ Account }) {
     const [accountFormUpdate, setFormDataUpdate] = useState({
         name: "",
         email: "",
-        posisi: "Resepsionis",
+        posisi: "",
     });
 
     const [accountFormSubmit, setFormDataSubmit] = useState({
         name: "",
         email: "",
         password: "",
-        posisi: "Resepsionis",
+        posisi: "",
     });
 
     const handleFormSubmitUpdate = () => {

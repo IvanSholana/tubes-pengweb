@@ -117,16 +117,29 @@ export default function RoomPage({ Room }) {
     };
 
     // Update Jenis Kamar
+    const [update_jenis, updateJenis] = useState({
+        jenis: "",
+        harga: 0,
+        kapasitas: 0,
+        foto: null,
+    });
     const handleUpdateJenis = (event) => {
-        const { name, value } = event.target;
-        setRoomData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
+        const { name, value, type } = event.target;
+        if (type === "file") {
+            updateJenis((prevFormData) => ({
+                ...prevFormData,
+                [name]: event.target.files[0],
+            }));
+        } else {
+            updateJenis((prevFormData) => ({
+                ...prevFormData,
+                [name]: value,
+            }));
+        }
     };
 
     const handleUpdateRoomType = () => {
-        Inertia.post("/hotelroom/updatetype", formRoom, {
+        Inertia.post("/hotelroom/updatetype", update_jenis, {
             onSuccess: () => {
                 Inertia.visit("/hotelroom");
             },
@@ -134,6 +147,11 @@ export default function RoomPage({ Room }) {
                 console.error(errors);
             },
         });
+    };
+
+    const handleClickUpdateType = (event) => {
+        event.preventDefault();
+        handleUpdateRoomType();
     };
 
     return (
@@ -318,12 +336,10 @@ export default function RoomPage({ Room }) {
                                             Jenis Kamar
                                         </label>
                                         <select
-                                            name="jenis_kamar"
+                                            name="jenis"
                                             className="bg-slate-200 py-1 px-2"
                                             onChange={handleUpdateJenis}
-                                            defaultValue={
-                                                Room[0][0].jenis_kamar
-                                            }
+                                            value={update_jenis.jenis}
                                         >
                                             {Room[0].map((room) => (
                                                 <option
@@ -342,7 +358,7 @@ export default function RoomPage({ Room }) {
                                         <input
                                             name="harga"
                                             type="number"
-                                            onChange={handleInputChange}
+                                            onChange={handleUpdateJenis}
                                             className="focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                                         />
                                     </fieldset>
@@ -353,7 +369,7 @@ export default function RoomPage({ Room }) {
                                         <input
                                             name="kapasitas"
                                             type="number"
-                                            onChange={handleInputChange}
+                                            onChange={handleUpdateJenis}
                                             className="focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                                         />
                                     </fieldset>
@@ -363,16 +379,16 @@ export default function RoomPage({ Room }) {
                                             id="gambar"
                                             name="foto"
                                             accept="image/*"
-                                            onChange={handleInputChange}
+                                            onChange={handleUpdateJenis}
                                         />
                                     </fieldset>
                                     <div className="mt-[25px] flex justify-end">
                                         <Dialog.Close asChild>
                                             <button
-                                                onClick={handleClick}
+                                                onClick={handleClickUpdateType}
                                                 className=" bg-slate-900 text-white text-green11 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
                                             >
-                                                Save Data
+                                                Save Data Update
                                             </button>
                                         </Dialog.Close>
                                     </div>

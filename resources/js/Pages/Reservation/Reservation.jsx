@@ -302,7 +302,7 @@ export default function Reservation({ Room }) {
                                         </AlertDialog.Description>
                                         <div className="flex justify-end gap-[25px] z-50">
                                             <AlertDialog.Cancel asChild>
-                                                <button className="z-50 text-mauve11 bg-mauve4 hover:bg-mauve5 focus:shadow-mauve7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+                                                <button className="z-50 text-mauve11 bg-red-500 text-white hover:bg-mauve5 focus:shadow-mauve7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
                                                     Cancel
                                                 </button>
                                             </AlertDialog.Cancel>
@@ -311,7 +311,7 @@ export default function Reservation({ Room }) {
                                                     onClick={
                                                         handleConfirmSubmit
                                                     }
-                                                    className="z-50 text-red11 bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
+                                                    className="z-50 text-red11 bg-green-500 text-white hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
                                                 >
                                                     Yes
                                                 </button>
